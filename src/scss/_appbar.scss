@@ -17,11 +17,19 @@ header:deep(.v-toolbar__content) {
       .link {
         text-decoration: unset;
         color: inherit;
+        border-bottom: solid transparent 3px;
+
+        transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95), border-bottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        &:hover:not(.active) {
+          border-bottom: solid $color-primary 3px;
+          color: red;
+
+        }
       }
     }
   }
 }
 
 .active {
-  border-bottom: solid $color-tertiary 3px;
+  border-bottom: solid $color-tertiary 3px !important;
 }
