@@ -24,9 +24,19 @@ import AppbarCpn from "./components/Appbar-cpn.vue";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-const modelWidth = 520;
-const modelHeight = 350;
-const modelRotation = 0.005;
+let model3D: any;
+
+const rotationSpeed = 0.0005;
+const upDownSpeed = 0.00005;
+const leftRightSpeed = 0.001;
+
+const rotationLimit = 0.1;
+const upDownLimit = 0.01;
+const leftRightLimit = 0.1;
+
+let rotation = true;
+let upDown = true;
+let leftRight = true;
 
 export default Vue.extend({
   name: "App",
@@ -41,13 +51,11 @@ export default Vue.extend({
       near: 0.1,
       far: 1000,
       cameraPositionZ: 0.35,
-      modelRotation: 0.005,
     };
   },
   methods: {
     initScene() {
       // var setup
-      let model3D: any;
       const wrapper = document.querySelector("#wrapper");
       const spotLight = new THREE.SpotLight(0xffffff, 2);
       const loader = new GLTFLoader();
@@ -91,12 +99,48 @@ export default Vue.extend({
       }
       window.addEventListener("resize", onWindowResize);
 
-      function animate() {
+      // drone animation
+      const animate = () => {
         requestAnimationFrame(animate);
-        if (model3D != undefined) model3D.rotation.y += modelRotation;
+        if (model3D != undefined) {
+          // this.droneFullRotate();
+          this.droneRotate();
+          this.droneUpDown();
+          this.droneLeftRight();
+        }
         renderer.render(scene, camera);
       }
       animate();
+    },
+    droneFullRotate() {
+      model3D.rotation.y += rotationSpeed;
+    },
+    droneRotate() {
+      if (rotation) {
+        model3D.rotation.y += rotationSpeed;
+        if (model3D.rotation.y >= rotationLimit) rotation = false;
+      } else {
+        model3D.rotation.y -= rotationSpeed;
+        if (model3D.rotation.y <= -rotationLimit) rotation = true;
+      }
+    },
+    droneUpDown() {
+      if (upDown) {
+        model3D.position.y += upDownSpeed;
+        if (model3D.position.y >= upDownLimit) upDown = false;
+      } else {
+        model3D.position.y -= upDownSpeed;
+        if (model3D.position.y <= 0) upDown = true;
+      }
+    },
+    droneLeftRight() {
+      if (leftRight) {
+        model3D.rotation.z += leftRightSpeed;
+        if (model3D.rotation.z >= leftRightLimit) leftRight = false;
+      } else {
+        model3D.rotation.z -= leftRightSpeed;
+        if (model3D.rotation.z <= -leftRightLimit) leftRight = true;
+      }
     },
   },
   mounted() {
