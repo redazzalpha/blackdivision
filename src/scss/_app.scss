@@ -1,0 +1,16 @@
+@import "variables.scss";
+
+#wrapper {
+    background-image: url("./assets/bg.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    &:deep(canvas) {
+        // border: solid blue 3px;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+    }
+}
