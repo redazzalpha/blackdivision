@@ -165,6 +165,7 @@ export default Vue.extend({
         );
         camera.position.z = this.cameraPositionZ;
         renderer.setSize(this.modelWidth, this.modelHeight);
+
         renderer.render(scene, camera);
       };
       animate();
