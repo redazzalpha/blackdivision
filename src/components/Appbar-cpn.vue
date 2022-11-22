@@ -5,7 +5,7 @@
     <div class="logo">BlackDivision9</div>
 
     <!-- nav -->
-    <nav class="d-none d-sm-block flex-grow-1">
+    <nav class="d-none d-md-block flex-grow-1">
       <v-container
         fluid
         grid-list-xs
@@ -27,7 +27,7 @@
 
     <!-- app bar button -->
     <v-app-bar-nav-icon
-      v-show="$vuetify.breakpoint.name == 'xs'"
+      v-show="$vuetify.breakpoint.name == 'xs' || $vuetify.breakpoint.name == 'sm'"
       color="white"
       @click="clicked"
       class="ml-auto"

@@ -52,14 +52,61 @@ export default Vue.extend({
     AppbarCpn,
     DrawerCpn,
   },
+  computed: {
+    modelWidth() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return 320;
+        case "sm":
+          return 520;
+        case "md":
+          return 520;
+        case "lg":
+          return 520;
+        case "xl":
+          return 520;
+        default:
+          return 520;
+      }
+    },
+    modelHeight() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return 150;
+        case "sm":
+          return 350;
+        case "md":
+          return 350;
+        case "lg":
+          return 350;
+        case "xl":
+          return 350;
+        default:
+          return 350;
+      }
+    },
+    cameraPositionZ() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return 0.27;
+        case "sm":
+          return 0.35;
+        case "md":
+          return 0.35;
+        case "lg":
+          return 0.35;
+        case "xl":
+          return 0.35;
+        default:
+          return 0.35;
+      }
+    },
+  },
   data() {
     return {
-      modelWidth: 520,
-      modelHeight: 350,
       fov: 75,
       near: 0.1,
       far: 1000,
-      cameraPositionZ: 0.35,
       drawer: false,
     };
   },
@@ -74,7 +121,7 @@ export default Vue.extend({
         antialias: true,
         alpha: true,
       });
-      const camera = new THREE.PerspectiveCamera(
+      let camera = new THREE.PerspectiveCamera(
         this.fov,
         this.modelWidth / this.modelHeight,
         this.near,
@@ -84,8 +131,8 @@ export default Vue.extend({
       // config setup
       camera.position.z = this.cameraPositionZ;
       spotLight.position.set(100, 10, 100);
-      renderer.setSize(this.modelWidth, this.modelHeight);
       scene.add(spotLight);
+      renderer.setSize(this.modelWidth, this.modelHeight);
       renderer.render(scene, camera);
       wrapper?.appendChild(renderer.domElement);
 
@@ -102,14 +149,29 @@ export default Vue.extend({
         (error: any) => console.log(error)
       );
 
+      /**
+       * THIS EVENT LISTENER HAS BEEN MUTED AND REPLACED BY CODE FRAGMENT
+       * IN ANIMATE FUNCTION CAUSE THE RENDER OF REACTIVE PROPERTIES
+       * DOES NOT COME AT TIME AND NEED TO BE ACTIVE TWICE ON RESIZE  WINDOW EVENT
+       *
+       */
+
       // event listeners
-      function onWindowResize() {
-        console.log("window resize here");
-        renderer.render(scene, camera);
-      }
-      window.addEventListener("resize", onWindowResize);
+      // const onWindowResize = () => {
+      //   renderer.setSize(this.modelWidth, this.modelHeight);
+      //   camera = new THREE.PerspectiveCamera(
+      //     this.fov,
+      //     this.modelWidth / this.modelHeight,
+      //     this.near,
+      //     this.far
+      //   );
+      //   camera.position.z = this.cameraPositionZ;
+      //   renderer.render(scene, camera);
+      // };
+      // window.addEventListener("resize", onWindowResize);
 
       // drone animation
+
       const animate = () => {
         requestAnimationFrame(animate);
         if (model3D != undefined) {
@@ -117,6 +179,22 @@ export default Vue.extend({
           this.droneLeftRight();
           this.droneRotate();
         }
+
+        /**
+         * THIS CODE FRAGMENT IS USED BY REPLACEMENT TO THE WINDOW RESIZE EVENT LISTENER 
+         * MAYBE GOT TO FIND A BETTER WAY TO HANDLE THIS BECAUSE THIS MAY CAUSE 
+         * PROCESSING OVERLOADING IN ANIMATE FUNCTION CAUSE IT'S ALWAYS PERFORMED
+         * ALL THE TIME
+         */
+        
+        renderer.setSize(this.modelWidth, this.modelHeight);
+        camera = new THREE.PerspectiveCamera(
+          this.fov,
+          this.modelWidth / this.modelHeight,
+          this.near,
+          this.far
+        );
+        camera.position.z = this.cameraPositionZ;
         renderer.render(scene, camera);
       };
       animate();
@@ -153,7 +231,7 @@ export default Vue.extend({
     },
   },
   mounted() {
-    // this.initScene();
+    this.initScene();
   },
 });
 </script>
