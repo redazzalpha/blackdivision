@@ -1,7 +1,6 @@
 @import "variables.scss";
 
 header:deep(.v-toolbar__content) {
-
   .logo {
     font-family: $font-logo;
     font-size: $font-size-logo;
@@ -9,8 +8,6 @@ header:deep(.v-toolbar__content) {
   }
 
   .container {
-    max-width: 50%;
-
     .nav-link {
       font-family: $font-subtitle;
       font-size: $font-size-subtitle;
@@ -28,6 +25,7 @@ header:deep(.v-toolbar__content) {
       }
     }
   }
+
 }
 
 .active {

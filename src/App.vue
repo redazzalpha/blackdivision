@@ -1,14 +1,19 @@
 <template>
   <!-- main wrapper -->
   <v-app id="wrapper">
-    <AppbarCpn />
+    <!-- app-bar-->
+    <AppbarCpn @clicked="drawer = !drawer" />
+    <!-- drawer -->
+    <DrawerCpn :drawer="drawer" @close="drawer = !drawer"/>
     <!-- main -->
-    <v-main>
+    <v-main tag="main">
       <!-- section -->
       <section>
+        <!-- main container -->
         <v-container fluid>
           <v-row>
             <v-col>
+              <!-- views -->
               <router-view />
             </v-col>
           </v-row>
@@ -20,15 +25,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import AppbarCpn from "./components/Appbar-cpn.vue";
+import AppbarCpn from "@/components/Appbar-cpn.vue";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import DrawerCpn from '@/components/Drawer-cpn.vue';
 
 let model3D: any;
 
-const rotationSpeed = 0.0005;
+const rotationSpeed = 0.001;
 const upDownSpeed = 0.00005;
-const leftRightSpeed = 0.001;
+const leftRightSpeed = 0.0005;
 
 const rotationLimit = 0.1;
 const upDownLimit = 0.01;
@@ -42,6 +48,7 @@ export default Vue.extend({
   name: "App",
   components: {
     AppbarCpn,
+    DrawerCpn,
   },
   data() {
     return {
@@ -51,9 +58,14 @@ export default Vue.extend({
       near: 0.1,
       far: 1000,
       cameraPositionZ: 0.35,
+      drawer: false,
     };
   },
   methods: {
+    fct() {
+      
+      console.log("clicked here ");
+    },
     initScene() {
       // var setup
       const wrapper = document.querySelector("#wrapper");
@@ -103,10 +115,9 @@ export default Vue.extend({
       const animate = () => {
         requestAnimationFrame(animate);
         if (model3D != undefined) {
-          // this.droneFullRotate();
-          this.droneRotate();
           this.droneUpDown();
           this.droneLeftRight();
+          this.droneRotate();
         }
         renderer.render(scene, camera);
       }
@@ -144,7 +155,7 @@ export default Vue.extend({
     },
   },
   mounted() {
-    this.initScene();
+    // this.initScene();
   },
 });
 </script>

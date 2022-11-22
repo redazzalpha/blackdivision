@@ -4,25 +4,32 @@
     <!-- logo -->
     <div class="logo">BlackDivision9</div>
     <!-- nav -->
-    <div class="nav flex-grow-1 d-flex justify-center">
-      <v-container fluid>
-        <v-row>
+    <nav class="d-none d-sm-block flex-grow-1">
+      <v-container
+        fluid
+        grid-list-xs
+        :style="`max-width: ${navContainerWidth}`"
+      >
+        <v-row class="" no-gutters>
           <v-col
             v-for="link in links"
             :key="link.label"
-            class="nav-link text-center"
+            class="nav-link text-center flex-grow"
           >
-            <router-link
-              :to="link.href"
-              class="link pb-1"
-              activeClass="active"
-            >
+            <router-link :to="link.href" class="link pb-1" activeClass="active">
               {{ link.label }}
             </router-link>
           </v-col>
         </v-row>
       </v-container>
-    </div>
+    </nav>
+    <!-- app bar button -->
+    <v-app-bar-nav-icon
+      v-show="$vuetify.breakpoint.name == 'xs'"
+      color="white"
+      @click="clicked"
+      class="ml-auto"
+    />
   </v-app-bar>
 </template>
 
@@ -30,6 +37,24 @@
 import Vue from "vue";
 export default Vue.extend({
   name: "Appbar-cpn",
+  computed: {
+    navContainerWidth() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "50%";
+        case "sm":
+          return "100%";
+        case "md":
+          return "100%";
+        case "lg":
+          return "50%";
+        case "xl":
+          return "50%";
+        default:
+          return "50%";
+      }
+    },
+  },
   data() {
     return {
       links: [
@@ -39,6 +64,11 @@ export default Vue.extend({
         { label: "Contacts", href: "/contacts" },
       ],
     };
+  },
+  methods: {
+    clicked() {
+      this.$emit("clicked");
+    },
   },
 });
 </script>
