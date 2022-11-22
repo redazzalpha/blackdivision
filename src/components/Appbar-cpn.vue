@@ -47,7 +47,7 @@ export default Vue.extend({
         case "sm":
           return "100%";
         case "md":
-          return "100%";
+          return "75%";
         case "lg":
           return "50%";
         case "xl":
@@ -76,5 +76,5 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/appbar";
+@import "@/scss/appbar";
 </style>
