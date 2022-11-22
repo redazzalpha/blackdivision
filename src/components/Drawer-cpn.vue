@@ -1,8 +1,8 @@
 <template>
   <!-- navigation drawer -->
-  <v-navigation-drawer app :value="drawer" absolute temporary @input="input">
+  <v-navigation-drawer app :value="drawer" absolute temporary @input="input" color="#03091b" >
     <!-- list item avatar -->
-    <v-list-item>
+    <v-list-item class="white--text">
       <!-- avatar list item -->
       <v-list-item-avatar>
         <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
@@ -13,10 +13,10 @@
       </v-list-item-content>
     </v-list-item>
 
-    <v-divider></v-divider>
+    <v-divider color="white"></v-divider>
 
     <!-- list item links -->
-    <v-list dense rounded>
+    <v-list dense rounded class="white--text">
       <!-- list item  -->
       <v-list-item
         v-for="link in links"
@@ -25,12 +25,12 @@
         style="text-decoration: unset"
       >
         <!-- list item icon  -->
-        <v-list-item-icon>
-          <v-icon>{{ link.icon }}</v-icon>
+        <v-list-item-icon >
+          <v-icon color="white">{{ link.icon }}</v-icon>
         </v-list-item-icon>
 
         <!-- list item  content -->
-        <v-list-item-content>
+        <v-list-item-content class="white--text">
           <v-list-item-title>{{ link.label }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
