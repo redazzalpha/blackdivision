@@ -3,6 +3,7 @@
   <v-app-bar app class="white--text" elevation="0" color="transparent mt-2">
     <!-- logo -->
     <div class="logo">BlackDivision9</div>
+
     <!-- nav -->
     <nav class="d-none d-sm-block flex-grow-1">
       <v-container
@@ -23,6 +24,7 @@
         </v-row>
       </v-container>
     </nav>
+
     <!-- app bar button -->
     <v-app-bar-nav-icon
       v-show="$vuetify.breakpoint.name == 'xs'"

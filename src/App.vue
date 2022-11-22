@@ -3,8 +3,10 @@
   <v-app id="wrapper">
     <!-- app-bar-->
     <AppbarCpn @clicked="drawer = !drawer" />
+
     <!-- drawer -->
-    <DrawerCpn :drawer="drawer" @close="drawer = !drawer"/>
+    <DrawerCpn :drawer="drawer" @close="drawer = !drawer" />
+
     <!-- main -->
     <v-main tag="main">
       <!-- section -->
@@ -28,7 +30,7 @@ import Vue from "vue";
 import AppbarCpn from "@/components/Appbar-cpn.vue";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import DrawerCpn from '@/components/Drawer-cpn.vue';
+import DrawerCpn from "@/components/Drawer-cpn.vue";
 
 let model3D: any;
 
@@ -62,10 +64,6 @@ export default Vue.extend({
     };
   },
   methods: {
-    fct() {
-      
-      console.log("clicked here ");
-    },
     initScene() {
       // var setup
       const wrapper = document.querySelector("#wrapper");
@@ -120,7 +118,7 @@ export default Vue.extend({
           this.droneRotate();
         }
         renderer.render(scene, camera);
-      }
+      };
       animate();
     },
     droneFullRotate() {
