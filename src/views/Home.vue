@@ -6,10 +6,10 @@
       :src="background.href"
       :style="`
         position: absolute;
-        top: calc(100vh * ${index} - 64px);
+        top: calc(1000px * ${index} - 64px);
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 1000px;
         object-fit: cover;`"
     />
     <div class="model-container"></div>
