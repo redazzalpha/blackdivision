@@ -1,6 +1,13 @@
 <template>
   <!-- header -->
-  <v-app-bar app class="white--text" elevation="0" color="transparent mt-2">
+  <v-app-bar
+    app
+    class="white--text"
+    elevation="0"
+    color="#03091b"
+    style="position: fixed;"
+    hide-on-scroll
+  >
     <!-- logo -->
     <div class="logo">BlackDivision9</div>
 
@@ -27,7 +34,9 @@
 
     <!-- app bar button -->
     <v-app-bar-nav-icon
-      v-show="$vuetify.breakpoint.name == 'xs' || $vuetify.breakpoint.name == 'sm'"
+      v-show="
+        $vuetify.breakpoint.name == 'xs' || $vuetify.breakpoint.name == 'sm'
+      "
       color="white"
       @click="clicked"
       class="ml-auto"

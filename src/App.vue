@@ -12,7 +12,7 @@
       <!-- section -->
       <section>
         <!-- main container -->
-        <v-container fluid>
+        <v-container grid-list-xs fluid>
           <v-row>
             <v-col>
               <!-- views -->

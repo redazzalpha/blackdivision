@@ -1,6 +1,13 @@
 <template>
   <!-- navigation drawer -->
-  <v-navigation-drawer app :value="drawer" absolute temporary @input="input" color="#03091b" >
+  <v-navigation-drawer
+    app
+    :value="drawer"
+    temporary
+    @input="input"
+    class="drawer"
+    bottom
+  >
     <!-- list item avatar -->
     <v-list-item class="white--text">
       <!-- avatar list item -->
@@ -25,7 +32,7 @@
         style="text-decoration: unset"
       >
         <!-- list item icon  -->
-        <v-list-item-icon >
+        <v-list-item-icon>
           <v-icon color="white">{{ link.icon }}</v-icon>
         </v-list-item-icon>
 
@@ -67,4 +74,6 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style lang="scss">
+@import "@/scss/drawer";
+</style>

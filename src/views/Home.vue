@@ -1,6 +1,20 @@
 <template>
   <div class="home-container white--text">
+    <img
+      v-for="(background, index) in backgrounds"
+      :key="background.href"
+      :src="background.href"
+      :style="`
+        position: absolute;
+        top: calc(100vh * ${index} - 64px);
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;`"
+    />
     <div class="model-container"></div>
+    <div style="position: relative;">
+    </div>
   </div>
 </template>
 
@@ -80,12 +94,17 @@ export default Vue.extend({
       fov: 75,
       near: 0.1,
       far: 1000,
+      backgrounds: [
+        { href: require("../assets/bg.webp") },
+        { href: require("../assets/bg.jpg") },
+        { href: require("../assets/bg1.webp") },
+      ],
     };
   },
   methods: {
     droneInit() {
       // var setup
-      const wrapper = document.querySelector(".model-container");
+      const container = document.querySelector(".model-container");
       const spotLight = new THREE.SpotLight(0xffffff, 2);
       const loader = new GLTFLoader();
       const scene = new THREE.Scene();
@@ -102,11 +121,12 @@ export default Vue.extend({
 
       // config setup
       camera.position.z = this.cameraPositionZ;
-      spotLight.position.set(100, 10, 100);
+      const xyz = [100, 10, 100];
+      spotLight.position.set(...xyz);
       scene.add(spotLight);
       renderer.setSize(this.modelWidth, this.modelHeight);
       renderer.render(scene, camera);
-      wrapper?.appendChild(renderer.domElement);
+      container?.appendChild(renderer.domElement);
 
       // 3d model load
       loader.load(
@@ -170,7 +190,7 @@ export default Vue.extend({
       };
       animate();
     },
-    droneFullRotate() {6
+    droneFullRotate() {
       model3D.rotation.y += rotationSpeed;
     },
     droneRotate() {
