@@ -7,6 +7,7 @@
     color="#03091b"
     style="position: fixed;"
     hide-on-scroll
+    scroll-threshold="100"
   >
     <!-- logo -->
     <div class="logo">BlackDivision9</div>
