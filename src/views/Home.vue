@@ -150,17 +150,36 @@ export default Vue.extend({
           scene.add(model3D);
           camera.updateProjectionMatrix();
           renderer.render(scene, camera);
+
           const canvas = document.querySelector("canvas");
-          (canvas as HTMLElement).style.left = "-20px";
+          if (canvas) canvas.style.left = "-20px";
+
+          /**
+           * THIS CODE FRAGMENT IS USED TO MAKE APPEAR
+           * THE APP BAR ON TRANSITION AND IS IN REPLACEMENT
+           * TO MUTED FRAGMENT CODE IN - APP BAR CPN - MOUNTED HOOK - .
+           * THIS MAY CAUSE TROUBLE IF 3D MODEL IS NOT LOAD THE APP BAR
+           * WON'T APPEAR.
+           * TO FIX THE ISSUE MUTE THIS FRAGMENT CODE AND UNMUTED
+           * FRAGMENT CODE FROM - APP BAR CPN - MOUNTED HOOK - .
+           *
+           */
+
+          const header = document.querySelector("header");
+          if (header) {
+            setTimeout(() => {
+              header.style.opacity = "1";
+            }, 1500);
+          }
         },
         undefined,
         (error: any) => console.log(error)
       );
 
       /**
-       * THIS EVENT LISTENER HAS BEEN MUTED AND REPLACED BY CODE FRAGMENT
-       * IN ANIMATE FUNCTION CAUSE THE RENDER OF REACTIVE PROPERTIES
-       * DOES NOT COME AT TIME AND NEED TO BE ACTIVE TWICE ON RESIZE  WINDOW EVENT
+       * THIS - WINDOW RESIZE EVENT LISTENER - HAS BEEN MUTED FROM HERE AND IT HAS BEEN
+       * REPLACED BY CODE FRAGMENT IN ANIMATE FUNCTION CAUSE THE RENDER OF REACTIVE PROPERTIES
+       * DOES NOT COME AT TIME AND NEED TO BE ACTIVATE TWICE ON RESIZE WINDOW EVENT.
        *
        */
 
@@ -187,10 +206,11 @@ export default Vue.extend({
         }
 
         /**
-         * THIS CODE FRAGMENT IS USED BY REPLACEMENT TO THE WINDOW RESIZE EVENT LISTENER
-         * MAYBE GOT TO FIND A BETTER WAY TO HANDLE THIS BECAUSE THIS MAY CAUSE
-         * PROCESSING OVERLOADING IN ANIMATE FUNCTION CAUSE IT'S ALWAYS PERFORMED
-         * ALL THE TIME
+         * THIS CODE FRAGMENT IS USED BY REPLACEMENT TO THE - WINDOW RESIZE EVENT LISTENER - .
+         * THIS MAY CAUSE TROUBLE DUE TO THE PROCESSING OVERLOADING
+         * IN ANIMATE FUNCTION.
+         * ANIMATE FUNCTION IS PERFORMED ALL THE TIME.
+         *
          */
 
         camera = new THREE.PerspectiveCamera(

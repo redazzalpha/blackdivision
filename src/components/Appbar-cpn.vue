@@ -83,12 +83,22 @@ export default Vue.extend({
     },
   },
   mounted() {
-    const header = document.querySelector("header");
-    if (header) {
-      setTimeout(() => {
-        header.style.opacity = "1";
-      }, 1500);
-    }
+
+    /**
+     * THIS CODE FRAGMENT IS USED TO MAKE APPEAR  
+     * THE APP BAR ON TRANSITION.
+     * THIS CODE FRAGMENT AS BEEN MUTED FROM HERE 
+     * AND HAS BEEN MOVED TO - THE HOME PAGE - 3D MODEL LOAD SECTION - TO MAKE APPEAR
+     * THE APP BAR AT THE SAME TIME AS THE DRONE 3D MODEL.
+     * 
+     */
+
+    // const header = document.querySelector("header");
+    // if (header) {
+    //   setTimeout(() => {
+    //     header.style.opacity = "1";
+    //   }, 1500);
+    // }
   },
 });
 </script>
