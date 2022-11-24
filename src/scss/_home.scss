@@ -1,19 +1,54 @@
 @import "variables.scss";
 @import "keyframes";
 
-@mixin animation($animationClass, $duration, $delay, $top) {
+@mixin animation($animationClass, $duration, $delay, $top, $left, $invert) {
     @keyframes glowUpDown-#{$animationClass} {
-        0% {
-            top: calc(#{$top} - 100px)
+        @if($invert) {
+            0% {
+                top: calc(#{$top} + 100px)
+            }
+
+            100% {
+                top: #{$top};
+            }
         }
 
-        100% {
-            top: #{$top};
+        @else {
+            0% {
+                top: calc(#{$top} - 100px)
+            }
+
+            100% {
+                top: #{$top};
+            }
+        }
+    }
+
+    @keyframes glowLeftRight-#{$animationClass} {
+        @if($invert) {
+            0% {
+                left: calc(#{$left} + 100px)
+            }
+
+            100% {
+                left: #{$left};
+            }
+        }
+
+        @else {
+            0% {
+                left: calc(#{$left} - 100px)
+            }
+
+            100% {
+                left: #{$left};
+            }
         }
     }
 
     animation: glowing #{$duration} infinite alternate ease-in-out #{$delay},
-    glowUpDown-#{$animationClass} 5s infinite ease alternate #{$delay};
+    glowUpDown-#{$animationClass} 5s infinite ease alternate #{$delay},
+    glowLeftRight-#{$animationClass} 3s infinite ease alternate #{$delay};
 }
 
 .model-container {
@@ -40,38 +75,67 @@
 }
 
 .animate {
-    left: 60%;
+    $animationClass: "animate";
+    $duration: "6s";
+    $delay: "6s";
     $top: 32%;
+    $left: 60%;
+    $invert: false;
+
     top: $top;
-    @include animation("animate", "6s", "6s", $top);
+    left: $left;
+    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
 .animate1 {
-    left: 20%;
+    $animationClass: "animate1";
+    $duration: "8s";
+    $delay: "2s";
     $top: 47%;
+    $left: 20%;
+    $invert: true;
+
     top: $top;
-    @include animation("animate1", "8s", "2s", $top);
+    left: $left;
+    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
 
 }
 
 .animate2 {
-    left: 30%;
+    $animationClass: "animate2";
+    $duration: "7.5s";
+    $delay: "9s";
     $top: 72%;
+    $left: 30%;
+    $invert: false;
+
     top: $top;
-    @include animation("animate2", "7.5s", "9s", $top);
+    left: $left;
+    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
 .animate3 {
-    left: 50%;
+    $animationClass: "animate3";
+    $duration: "5.5s";
+    $delay: "4s";
     $top: 61%;
+    $left: 50%;
+    $invert: true;
+
     top: $top;
-    @include animation("animate3", "5.5s", "4s", $top);
+    left: $left;
+    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
 .animate4 {
-    left: 85%;
+    $animationClass: "animate4";
+    $duration: "7s";
+    $delay: "12s";
     $top: 90%;
+    $left: 85%;
+    $invert: false;
+
     top: $top;
-    @include animation("animate4", "7s", "12s", $top);
-    top: 90%;
+    left: $left;
+    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
 }
