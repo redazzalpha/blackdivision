@@ -43,7 +43,7 @@
     left: 60%;
     $top: 32%;
     top: $top;
-    @include animation("animate", "6s", "3s", $top);
+    @include animation("animate", "6s", "6s", $top);
 }
 
 .animate1 {
@@ -58,7 +58,7 @@
     left: 30%;
     $top: 72%;
     top: $top;
-    @include animation("animate2", "7.5s", "1s", $top);
+    @include animation("animate2", "7.5s", "9s", $top);
 }
 
 .animate3 {
@@ -72,6 +72,6 @@
     left: 85%;
     $top: 90%;
     top: $top;
-    @include animation("animate4", "7s", "5s", $top);
+    @include animation("animate4", "7s", "12s", $top);
     top: 90%;
 }
