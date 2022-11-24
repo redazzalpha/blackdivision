@@ -5,7 +5,6 @@
     class="white--text"
     elevation="0"
     color="#03091b"
-    style="position: fixed;"
     hide-on-scroll
     scroll-threshold="100"
   >

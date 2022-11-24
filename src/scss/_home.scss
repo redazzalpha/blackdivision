@@ -1,4 +1,20 @@
 @import "variables.scss";
+@import "keyframes";
+
+@mixin animation($animationClass, $duration, $delay, $top) {
+    @keyframes glowUpDown-#{$animationClass} {
+        0% {
+            top: calc(#{$top} - 100px)
+        }
+
+        100% {
+            top: #{$top};
+        }
+    }
+
+    animation: glowing #{$duration} infinite alternate ease-in-out #{$delay},
+    glowUpDown-#{$animationClass} 5s infinite ease alternate #{$delay};
+}
 
 .model-container {
     canvas {
@@ -8,3 +24,54 @@
     }
 }
 
+.glow {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0;
+
+    box-shadow:
+        0 0 0px 0px #fff,
+        0 0 0px 0px #f0f,
+        0 0 0px 0px #0ff;
+
+}
+
+.animate {
+    left: 60%;
+    $top: 32%;
+    top: $top;
+    @include animation("animate", "6s", "3s", $top);
+}
+
+.animate1 {
+    left: 20%;
+    $top: 47%;
+    top: $top;
+    @include animation("animate1", "8s", "2s", $top);
+
+}
+
+.animate2 {
+    left: 30%;
+    $top: 72%;
+    top: $top;
+    @include animation("animate2", "7.5s", "1s", $top);
+}
+
+.animate3 {
+    left: 50%;
+    $top: 61%;
+    top: $top;
+    @include animation("animate3", "5.5s", "4s", $top);
+}
+
+.animate4 {
+    left: 85%;
+    $top: 90%;
+    top: $top;
+    @include animation("animate4", "7s", "5s", $top);
+    top: 90%;
+}

@@ -1,5 +1,7 @@
 <template>
+  <!-- home main container-->
   <div class="home-container white--text">
+    <!-- backgrounds -->
     <img
       v-for="(background, index) in backgrounds"
       :key="background.href"
@@ -12,9 +14,21 @@
         height: 1000px;
         object-fit: cover;`"
     />
+
+    <!-- drone 3d model -->
     <div class="model-container"></div>
-    <div style="position: relative;">
+
+    <!-- glow container -->
+    <div class="glow-container" style="height: 500px">
+      <span class="glow animate"></span>
+      <span class="glow animate1"></span>
+      <span class="glow animate2"></span>
+      <span class="glow animate3"></span>
+      <span class="glow animate4"></span>
     </div>
+
+    <!-- page content container -->
+    <div style="position: relative"></div>
   </div>
 </template>
 
