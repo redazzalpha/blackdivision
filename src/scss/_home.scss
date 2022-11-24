@@ -1,55 +1,5 @@
 @import "variables.scss";
-@import "keyframes";
-
-@mixin animation($animationClass, $duration, $delay, $top, $left, $invert) {
-    @keyframes glowUpDown-#{$animationClass} {
-        @if($invert) {
-            0% {
-                top: calc(#{$top} + 100px)
-            }
-
-            100% {
-                top: #{$top};
-            }
-        }
-
-        @else {
-            0% {
-                top: calc(#{$top} - 100px)
-            }
-
-            100% {
-                top: #{$top};
-            }
-        }
-    }
-
-    @keyframes glowLeftRight-#{$animationClass} {
-        @if($invert) {
-            0% {
-                left: calc(#{$left} + 100px)
-            }
-
-            100% {
-                left: #{$left};
-            }
-        }
-
-        @else {
-            0% {
-                left: calc(#{$left} - 100px)
-            }
-
-            100% {
-                left: #{$left};
-            }
-        }
-    }
-
-    animation: glowing #{$duration} infinite alternate ease-in-out #{$delay},
-    glowUpDown-#{$animationClass} 5s infinite ease alternate #{$delay},
-    glowLeftRight-#{$animationClass} 3s infinite ease alternate #{$delay};
-}
+@import "mixins";
 
 .model-container {
     canvas {
@@ -71,7 +21,6 @@
         0 0 0px 0px #fff,
         0 0 0px 0px #f0f,
         0 0 0px 0px #0ff;
-
 }
 
 .animate {
