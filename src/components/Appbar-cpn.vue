@@ -68,6 +68,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      test: false,
       links: [
         { label: "Accueil", href: "/home" },
         { label: "Nos drônes", href: "/drones" },
@@ -80,6 +81,14 @@ export default Vue.extend({
     clicked() {
       this.$emit("clicked");
     },
+  },
+  mounted() {
+    const header = document.querySelector("header");
+    if (header) {
+      setTimeout(() => {
+        header.style.opacity = "1";
+      }, 1500);
+    }
   },
 });
 </script>

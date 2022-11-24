@@ -150,6 +150,8 @@ export default Vue.extend({
           scene.add(model3D);
           camera.updateProjectionMatrix();
           renderer.render(scene, camera);
+          const canvas = document.querySelector("canvas");
+          (canvas as HTMLElement).style.left = "-20px";
         },
         undefined,
         (error: any) => console.log(error)

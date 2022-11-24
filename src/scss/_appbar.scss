@@ -1,32 +1,39 @@
 @import "variables.scss";
 
-header:deep(.v-toolbar__content) {
+header {
+  opacity: 0;
+    transition: opacity 1s linear;
+
+  &:deep(.v-toolbar__content) {
   
-  .logo {
-    font-family: $font-logo;
-    font-size: $font-size-logo;
-    font-weight: normal;
-  }
-
-  .container {
-    .nav-link {
-      font-family: $font-subtitle;
-      font-size: $font-size-subtitle;
-      .link {
-        text-decoration: unset;
-        color: inherit;
-        border-bottom: solid transparent 3px;
-
-        transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95), border-bottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-        &:hover:not(.active) {
-          border-bottom: solid $color-primary 3px;
-          color: red;
-
+    .logo{
+      font-family: $font-logo;
+      font-size: $font-size-logo;
+      font-weight: normal;
+    }
+  
+    .container {
+      .nav-link {
+        font-family: $font-subtitle;
+        font-size: $font-size-subtitle;
+  
+        .link {
+          text-decoration: unset;
+          color: inherit;
+          border-bottom: solid transparent 3px;
+  
+          transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95), border-bottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  
+          &:hover:not(.active) {
+            border-bottom: solid $color-primary 3px;
+            color: red;
+  
+          }
         }
       }
     }
+  
   }
-
 }
 
 .active {
