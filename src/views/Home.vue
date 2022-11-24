@@ -51,6 +51,9 @@ let rotation = true;
 let upDown = true;
 let leftRight = true;
 
+let header: any;
+let canvas: any;
+
 export default Vue.extend({
   name: "Home-page",
   computed: {
@@ -116,7 +119,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    droneInit() {
+    droneSetup() {
       // var setup
       const container = document.querySelector(".model-container");
       const spotLight = new THREE.SpotLight(0xffffff, 2);
@@ -141,6 +144,8 @@ export default Vue.extend({
       renderer.setSize(this.modelWidth, this.modelHeight);
       renderer.render(scene, camera);
       container?.appendChild(renderer.domElement);
+      header = document.querySelector("header");
+      canvas = document.querySelector("canvas");
 
       // 3d model load
       loader.load(
@@ -150,9 +155,7 @@ export default Vue.extend({
           scene.add(model3D);
           camera.updateProjectionMatrix();
           renderer.render(scene, camera);
-
-          const canvas = document.querySelector("canvas");
-          if (canvas) canvas.style.left = "-20px";
+          canvas.style.left = "-20px";
 
           /**
            * THIS CODE FRAGMENT IS USED TO MAKE APPEAR
@@ -165,12 +168,9 @@ export default Vue.extend({
            *
            */
 
-          const header = document.querySelector("header");
-          if (header) {
-            setTimeout(() => {
-              header.style.opacity = "1";
-            }, 1500);
-          }
+          setTimeout(() => {
+            header.style.opacity = "1";
+          }, 1500);
         },
         undefined,
         (error: any) => console.log(error)
@@ -221,7 +221,6 @@ export default Vue.extend({
         );
         camera.position.z = this.cameraPositionZ;
         renderer.setSize(this.modelWidth, this.modelHeight);
-
         renderer.render(scene, camera);
       };
       animate();
@@ -256,9 +255,18 @@ export default Vue.extend({
         if (model3D.rotation.z <= -leftRightLimit) leftRight = true;
       }
     },
+    onWindowScroll() {
+      const onScroll = () => {
+        // 3D model animation on scroll window
+        if (window.scrollY >= 100) canvas.style.left = "-600px";
+        else canvas.style.left = "-20px";
+      };
+      window.addEventListener("scroll", onScroll);
+    },
   },
   mounted() {
-    this.droneInit();
+    this.droneSetup();
+    this.onWindowScroll();
   },
 });
 </script>
