@@ -3,6 +3,7 @@
 .home-container {
     .model-container {
         overflow-x: hidden;
+
         canvas {
             position: relative;
             top: 0px;
@@ -12,7 +13,7 @@
     }
 
     .glow-container {
-        height: 400px;
+        height: 350px;
 
         .glow {
             position: absolute;
@@ -28,9 +29,11 @@
                 0 0 0px 0px #0ff;
         }
     }
+
     .content-container {
         position: relative;
         overflow-x: hidden;
+
         .extra-title {
             position: relative;
             left: 2000px;
