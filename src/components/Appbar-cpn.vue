@@ -24,7 +24,7 @@
             :key="link.label"
             class="nav-link text-center flex-grow"
           >
-            <router-link :to="link.href" class="link pb-1" activeClass="active">
+            <router-link :to="link.href" class="link pb-1" activeClass="nav-link-active">
               {{ link.label }}
             </router-link>
           </v-col>
@@ -81,24 +81,18 @@ export default Vue.extend({
     clicked() {
       this.$emit("clicked");
     },
+    showAppbar() {
+      const header = document.querySelector("header");
+    if (header) {
+      setTimeout(() => {
+        header.style.opacity = "1";
+      }, 1500);
+    }
+
+    }
   },
   mounted() {
-
-    /**
-     * THIS CODE FRAGMENT IS USED TO MAKE APPEAR  
-     * THE APP BAR ON TRANSITION.
-     * THIS CODE FRAGMENT AS BEEN MUTED FROM HERE 
-     * AND HAS BEEN MOVED TO - THE HOME PAGE - 3D MODEL LOAD SECTION - TO MAKE APPEAR
-     * THE APP BAR AT THE SAME TIME AS THE DRONE 3D MODEL.
-     * 
-     */
-
-    // const header = document.querySelector("header");
-    // if (header) {
-    //   setTimeout(() => {
-    //     header.style.opacity = "1";
-    //   }, 1500);
-    // }
+    this.showAppbar();
   },
 });
 </script>

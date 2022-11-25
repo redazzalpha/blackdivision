@@ -1,3 +1,7 @@
+/*
+* GROUP VARIABLES
+*/
+
 // font family
 $font-title: 'Playfair Display', serif !important;
 $font-subtitle: 'Playfair Display', serif !important;
@@ -15,6 +19,40 @@ $color-primary: #FFFFFF;
 $color-secondary: #000000;
 $color-tertiary: #ECD06F;
 $color-dark-blue: #03091b;
+$color-nav-link-hover: #ff0000;
+
+// border
+$border-size: 3px;
+$border-round: 50%;
+$border-nav-link-active: solid $color-tertiary $border-size !important;
+$border-nav-link-hover: solid $color-primary $border-size;
+$border-nav-link-hidden: solid transparent $border-size;
+
+// glow
+$glow-size: 5px;
+$glow-color: #fff;
+$glow-animation-offset: 100px;
+$glow-shadow-off: 0 0 0px 0px #fff, 0 0 0px 0px #f0f, 0 0 0px 0px #0ff;
+$glow-shadow-on: 0 0 21px 11px #fff, 0 0 31px 13px #f0f, 0 0 35px 15px #0ff;
+
+// extra title
+$extra-title-shadow: 3px 1px 2px mediumblue;
+
+/*
+* SECTION VARIABLES
+*/
+
+// transitions
+$base-transition: left 1.5s linear;
+$drone-transition: $base-transition;
+$extra-title-transition: $base-transition;
+$header-transition: opacity 1s linear;
+$nav-link-transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95), border-bottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+// start positions
+$drone-start-position: -600px;
+$extra-title-start-position: 2000px;
+
 
 
 

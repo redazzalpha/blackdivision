@@ -14,11 +14,11 @@
 
     <!-- glow container -->
     <div class="glow-container" :style="glowContainerStyle">
-      <span class="glow animate"></span>
-      <span class="glow animate1"></span>
-      <span class="glow animate2"></span>
-      <span class="glow animate3"></span>
-      <span class="glow animate4"></span>
+      <span class="glow glow-animate"></span>
+      <span class="glow glow-animate1"></span>
+      <span class="glow glow-animate2"></span>
+      <span class="glow glow-animate3"></span>
+      <span class="glow glow-animate4"></span>
     </div>
 
     <!-- page content container -->
@@ -52,8 +52,7 @@ let rotation = true;
 let upDown = true;
 let leftRight = true;
 
-let header: any;
-let canvas: any;
+let model3Dcanvas: any;
 let extraTitle: any;
 
 export default Vue.extend({
@@ -180,8 +179,7 @@ export default Vue.extend({
       renderer.render(scene, camera);
       container?.appendChild(renderer.domElement);
 
-      header = document.querySelector("header");
-      canvas = document.querySelector("canvas");
+      model3Dcanvas = document.querySelector(".model-container > canvas");
       extraTitle = document.querySelector(".extra-title");
 
       // 3d model load
@@ -192,23 +190,8 @@ export default Vue.extend({
           scene.add(model3D);
           camera.updateProjectionMatrix();
           renderer.render(scene, camera);
-          canvas.style.left = "-20px";
+          model3Dcanvas.style.left = "-20px";
           extraTitle.style.left = "0px";
-
-          /**
-           * THIS CODE FRAGMENT IS USED TO MAKE APPEAR
-           * THE APP BAR ON TRANSITION AND IS IN REPLACEMENT
-           * TO MUTED FRAGMENT CODE IN - APP BAR CPN - MOUNTED HOOK - .
-           * THIS MAY CAUSE TROUBLE IF 3D MODEL IS NOT LOAD THE APP BAR
-           * WON'T APPEAR.
-           * TO FIX THE ISSUE MUTE THIS FRAGMENT CODE AND UNMUTED
-           * FRAGMENT CODE FROM - APP BAR CPN - MOUNTED HOOK - .
-           *
-           */
-
-          setTimeout(() => {
-            header.style.opacity = "1";
-          }, 1500);
         },
         undefined,
         (error: any) => console.log(error)
@@ -308,10 +291,10 @@ export default Vue.extend({
       const onScroll = () => {
         // animation on scroll window
         if (window.scrollY >= 400) {
-          canvas.style.left = "-600px";
+          model3Dcanvas.style.left = "-600px";
           extraTitle.style.left = "2000px";
         } else {
-          canvas.style.left = "-20px";
+          model3Dcanvas.style.left = "-20px";
           extraTitle.style.left = "0px";
         }
       };

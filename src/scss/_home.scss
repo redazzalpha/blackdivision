@@ -6,25 +6,20 @@
 
         canvas {
             position: relative;
-            top: 0px;
-            left: -600px;
-            transition: left 1.5s linear;
+            left: $drone-start-position;
+            transition: $drone-transition;
         }
     }
 
     .glow-container {
         .glow {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: #fff;
+            width: $glow-size;
+            height: $glow-size;
+            border-radius: $border-round;
+            background-color: $glow-color;
+            box-shadow: $glow-shadow-off;
             opacity: 0;
-
-            box-shadow:
-                0 0 0px 0px #fff,
-                0 0 0px 0px #f0f,
-                0 0 0px 0px #0ff;
         }
     }
 
@@ -34,15 +29,15 @@
 
         .extra-title {
             position: relative;
-            left: 2000px;
-            text-shadow: 3px 1px 2px mediumblue;
-            transition: left 1.5s linear;
+            left: $extra-title-start-position;
+            text-shadow: $extra-title-shadow;
+            transition: $extra-title-transition;
         }
     }
 }
 
-.animate {
-    $animationClass: "animate";
+.glow-animate {
+    $animationClass: "glow-animate";
     $duration: "6s";
     $delay: "6s";
     $top: 32%;
@@ -51,11 +46,11 @@
 
     top: $top;
     left: $left;
-    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
-.animate1 {
-    $animationClass: "animate1";
+.glow-animate1 {
+    $animationClass: "glow-animate1";
     $duration: "8s";
     $delay: "2s";
     $top: 47%;
@@ -64,12 +59,12 @@
 
     top: $top;
     left: $left;
-    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
 
 }
 
-.animate2 {
-    $animationClass: "animate2";
+.glow-animate2 {
+    $animationClass: "glow-animate2";
     $duration: "7.5s";
     $delay: "9s";
     $top: 72%;
@@ -78,11 +73,11 @@
 
     top: $top;
     left: $left;
-    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
-.animate3 {
-    $animationClass: "animate3";
+.glow-animate3 {
+    $animationClass: "glow-animate3";
     $duration: "5.5s";
     $delay: "4s";
     $top: 61%;
@@ -91,11 +86,11 @@
 
     top: $top;
     left: $left;
-    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
 }
 
-.animate4 {
-    $animationClass: "animate4";
+.glow-animate4 {
+    $animationClass: "glow-animate4";
     $duration: "7s";
     $delay: "12s";
     $top: 90%;
@@ -104,5 +99,5 @@
 
     top: $top;
     left: $left;
-    @include animation($animationClass, $duration, $delay, $top, $left, $invert);
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
 }
