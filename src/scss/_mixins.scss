@@ -1,5 +1,3 @@
-@import "keyframes";
-
 @mixin animation($animationClass, $duration, $delay, $top, $left, $invert) {
     @keyframes glowUpDown-#{$animationClass} {
         @if($invert) {

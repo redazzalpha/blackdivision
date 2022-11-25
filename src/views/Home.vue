@@ -19,7 +19,7 @@
     <div class="model-container"></div>
 
     <!-- glow container -->
-    <div class="glow-container" style="height: 500px">
+    <div class="glow-container">
       <span class="glow animate"></span>
       <span class="glow animate1"></span>
       <span class="glow animate2"></span>
@@ -28,7 +28,9 @@
     </div>
 
     <!-- page content container -->
-    <div style="position: relative"></div>
+    <div style="position: relative">
+      <h1>Home page</h1>
+    </div>
   </div>
 </template>
 

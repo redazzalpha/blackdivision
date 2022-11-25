@@ -44,6 +44,6 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
-@import "@/scss/app";
+<style lang="scss">
+@import "@/scss/style";
 </style>

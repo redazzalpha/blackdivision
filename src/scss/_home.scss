@@ -1,27 +1,32 @@
-@import "variables.scss";
 @import "mixins";
 
-.model-container {
-    canvas {
-        position: relative;
-        top: 0px;
-        left: -600px;
-        transition: left 1.5s linear;
+.home-container {
+    .model-container {
+        canvas {
+            position: relative;
+            top: 0px;
+            left: -600px;
+            transition: left 1.5s linear;
+        }
     }
-}
 
-.glow {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #fff;
-    opacity: 0;
+    .glow-container {
 
-    box-shadow:
-        0 0 0px 0px #fff,
-        0 0 0px 0px #f0f,
-        0 0 0px 0px #0ff;
+        height: 500px;
+        .glow {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0;
+
+            box-shadow:
+                0 0 0px 0px #fff,
+                0 0 0px 0px #f0f,
+                0 0 0px 0px #0ff;
+        }
+    }
 }
 
 .animate {
