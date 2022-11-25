@@ -28,8 +28,14 @@
     </div>
 
     <!-- page content container -->
-    <div style="position: relative">
-      <h1>Home page</h1>
+    <div class="content-container">
+      <h1
+        class="extra-title text-center"
+        :style="extraTitle"
+        style="text-shadow: 5px 5px 4px black"
+      >
+        La puissance des drônes au bout des doigts
+      </h1>
     </div>
   </div>
 </template>
@@ -55,6 +61,7 @@ let leftRight = true;
 
 let header: any;
 let canvas: any;
+let extraTitle: any;
 
 export default Vue.extend({
   name: "Home-page",
@@ -72,7 +79,7 @@ export default Vue.extend({
         case "xl":
           return 520;
         default:
-          return 520;
+          return 320;
       }
     },
     modelHeight() {
@@ -88,7 +95,7 @@ export default Vue.extend({
         case "xl":
           return 350;
         default:
-          return 350;
+          return 150;
       }
     },
     cameraPositionZ() {
@@ -104,7 +111,23 @@ export default Vue.extend({
         case "xl":
           return 0.35;
         default:
-          return 0.35;
+          return 0.27;
+      }
+    },
+    extraTitle() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 40px";
+        case "sm":
+          return "font-size: 48px";
+        case "md":
+          return "font-size: 48px";
+        case "lg":
+          return "font-size: 60px";
+        case "xl":
+          return "font-size: 60px";
+        default:
+          return "font-size: 64px";
       }
     },
   },
@@ -146,8 +169,10 @@ export default Vue.extend({
       renderer.setSize(this.modelWidth, this.modelHeight);
       renderer.render(scene, camera);
       container?.appendChild(renderer.domElement);
+
       header = document.querySelector("header");
       canvas = document.querySelector("canvas");
+      extraTitle = document.querySelector(".extra-title");
 
       // 3d model load
       loader.load(
@@ -158,6 +183,7 @@ export default Vue.extend({
           camera.updateProjectionMatrix();
           renderer.render(scene, camera);
           canvas.style.left = "-20px";
+          extraTitle.style.left = "0px";
 
           /**
            * THIS CODE FRAGMENT IS USED TO MAKE APPEAR
@@ -259,9 +285,17 @@ export default Vue.extend({
     },
     onWindowScroll() {
       const onScroll = () => {
-        // 3D model animation on scroll window
-        if (window.scrollY >= 100) canvas.style.left = "-600px";
-        else canvas.style.left = "-20px";
+        // animation on scroll window
+        if (window.scrollY >= 100) {
+          canvas.style.left = "-600px";
+          extraTitle.style.left = "2000px";
+          
+        } 
+        else {
+          canvas.style.left = "-20px";
+          extraTitle.style.left = "0px";
+
+        } 
       };
       window.addEventListener("scroll", onScroll);
     },

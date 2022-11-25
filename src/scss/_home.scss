@@ -2,6 +2,7 @@
 
 .home-container {
     .model-container {
+        overflow-x: hidden;
         canvas {
             position: relative;
             top: 0px;
@@ -11,8 +12,8 @@
     }
 
     .glow-container {
+        height: 400px;
 
-        height: 500px;
         .glow {
             position: absolute;
             width: 5px;
@@ -25,6 +26,15 @@
                 0 0 0px 0px #fff,
                 0 0 0px 0px #f0f,
                 0 0 0px 0px #0ff;
+        }
+    }
+    .content-container {
+        position: relative;
+        overflow-x: hidden;
+        .extra-title {
+            position: relative;
+            left: 2000px;
+            transition: left 1.5s linear;
         }
     }
 }
