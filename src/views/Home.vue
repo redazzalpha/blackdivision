@@ -6,13 +6,7 @@
       v-for="(background, index) in backgrounds"
       :key="background.href"
       :src="background.href"
-      :style="`
-        position: absolute;
-        top: calc(1000px * ${index} - 64px);
-        left: 0;
-        width: 100vw;
-        height: 1000px;
-        object-fit: cover;`"
+      :style="backgroundStyle(index)"
     />
 
     <!-- drone 3d model -->
@@ -32,7 +26,6 @@
       <h1
         class="extra-title text-center"
         :style="extraTitleStyle"
-        style="text-shadow: 5px 5px 4px black"
       >
         La puissance des drônes au bout des doigts
       </h1>
@@ -103,7 +96,7 @@ export default Vue.extend({
         case "xs":
           return 0.27;
         case "sm":
-          return 0.30;
+          return 0.3;
         case "md":
           return 0.35;
         case "lg":
@@ -301,6 +294,16 @@ export default Vue.extend({
       }
     },
 
+    backgroundStyle(index: number) {
+      return (
+        `top: calc(1000px * ${index} - 64px);` +
+        "position: absolute;" +
+        "left: 0;" +
+        "width: 100vw;" +
+        "height: 1000px;" +
+        "object-fit: cover;"
+      );
+    },
     onWindowScroll() {
       const onScroll = () => {
         // animation on scroll window

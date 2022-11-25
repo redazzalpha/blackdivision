@@ -16,7 +16,7 @@
       <v-container
         fluid
         grid-list-xs
-        :style="`max-width: ${navContainerWidth}`"
+        :style="navContainerStyle"
       >
         <v-row class="" no-gutters>
           <v-col
@@ -34,9 +34,7 @@
 
     <!-- app bar button -->
     <v-app-bar-nav-icon
-      v-show="
-        $vuetify.breakpoint.name == 'xs' || $vuetify.breakpoint.name == 'sm'
-      "
+      v-show="showAppBarNavIcon"
       color="white"
       @click="clicked"
       class="ml-auto"
@@ -49,26 +47,28 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Appbar-cpn",
   computed: {
-    navContainerWidth() {
+    navContainerStyle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "50%";
+          return "max-width: 50%";
         case "sm":
-          return "100%";
+          return "max-width: 100%";
         case "md":
-          return "75%";
+          return "max-width: 75%";
         case "lg":
-          return "50%";
+          return "max-width: 50%";
         case "xl":
-          return "50%";
+          return "max-width: 50%";
         default:
-          return "50%";
+          return "max-width: 50%";
       }
     },
+    showAppBarNavIcon() {
+      return this.$vuetify.breakpoint.name == 'xs' || this.$vuetify.breakpoint.name == 'sm';
+    }
   },
   data() {
     return {
-      test: false,
       links: [
         { label: "Accueil", href: "/home" },
         { label: "Nos drônes", href: "/drones" },

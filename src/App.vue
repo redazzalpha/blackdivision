@@ -22,6 +22,7 @@
         </v-container>
       </section>
     </v-main>
+    <ScrollTopBtnCpn />
   </v-app>
 </template>
 
@@ -29,12 +30,14 @@
 import Vue from "vue";
 import AppbarCpn from "@/components/Appbar-cpn.vue";
 import DrawerCpn from "@/components/Drawer-cpn.vue";
+import ScrollTopBtnCpn from "@/components/ScrollTopBtn-cpn.vue"
 
 export default Vue.extend({
   name: "App",
   components: {
     AppbarCpn,
     DrawerCpn,
+    ScrollTopBtnCpn,
   },
   data() {
     return {
