@@ -19,7 +19,7 @@
     <div class="model-container"></div>
 
     <!-- glow container -->
-    <div class="glow-container">
+    <div class="glow-container" :style="glowContainerStyle">
       <span class="glow animate"></span>
       <span class="glow animate1"></span>
       <span class="glow animate2"></span>
@@ -31,7 +31,7 @@
     <div class="content-container">
       <h1
         class="extra-title text-center"
-        :style="extraTitle"
+        :style="extraTitleStyle"
         style="text-shadow: 5px 5px 4px black"
       >
         La puissance des drônes au bout des doigts
@@ -71,7 +71,7 @@ export default Vue.extend({
         case "xs":
           return 320;
         case "sm":
-          return 520;
+          return 420;
         case "md":
           return 520;
         case "lg":
@@ -87,7 +87,7 @@ export default Vue.extend({
         case "xs":
           return 150;
         case "sm":
-          return 350;
+          return 250;
         case "md":
           return 350;
         case "lg":
@@ -103,7 +103,7 @@ export default Vue.extend({
         case "xs":
           return 0.27;
         case "sm":
-          return 0.35;
+          return 0.30;
         case "md":
           return 0.35;
         case "lg":
@@ -114,12 +114,13 @@ export default Vue.extend({
           return 0.27;
       }
     },
-    extraTitle() {
+
+    extraTitleStyle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
           return "font-size: 40px";
         case "sm":
-          return "font-size: 48px";
+          return "font-size: 40px";
         case "md":
           return "font-size: 48px";
         case "lg":
@@ -128,6 +129,22 @@ export default Vue.extend({
           return "font-size: 60px";
         default:
           return "font-size: 64px";
+      }
+    },
+    glowContainerStyle() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "height: 250px";
+        case "sm":
+          return "height: 250px";
+        case "md":
+          return "height: 350px";
+        case "lg":
+          return "height: 350px";
+        case "xl":
+          return "height: 350px";
+        default:
+          return "height: 354px";
       }
     },
   },
@@ -283,19 +300,17 @@ export default Vue.extend({
         if (model3D.rotation.z <= -leftRightLimit) leftRight = true;
       }
     },
+
     onWindowScroll() {
       const onScroll = () => {
         // animation on scroll window
-        if (window.scrollY >= 100) {
+        if (window.scrollY >= 400) {
           canvas.style.left = "-600px";
           extraTitle.style.left = "2000px";
-          
-        } 
-        else {
+        } else {
           canvas.style.left = "-20px";
           extraTitle.style.left = "0px";
-
-        } 
+        }
       };
       window.addEventListener("scroll", onScroll);
     },
