@@ -23,10 +23,7 @@
 
     <!-- page content container -->
     <div class="content-container">
-      <h1
-        class="extra-title text-center"
-        :style="extraTitleStyle"
-      >
+      <h1 class="extra-title text-center" :style="extraTitleStyle">
         La puissance des drônes au bout des doigts
       </h1>
     </div>
@@ -35,22 +32,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-
-let model3D: any;
-
-const rotationSpeed = 0.001;
-const upDownSpeed = 0.00005;
-const leftRightSpeed = 0.0005;
-
-const rotationLimit = 0.1;
-const upDownLimit = 0.01;
-const leftRightLimit = 0.1;
-
-let rotation = true;
-let upDown = true;
-let leftRight = true;
+import Model3D from "@/classes/model3D";
 
 let model3Dcanvas: any;
 let extraTitle: any;
@@ -142,9 +124,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      fov: 75,
-      near: 0.1,
-      far: 1000,
       backgrounds: [
         { href: require("../assets/bg.webp") },
         { href: require("../assets/bg.jpg") },
@@ -153,130 +132,23 @@ export default Vue.extend({
     };
   },
   methods: {
-    droneSetup() {
-      // var setup
-      const container = document.querySelector(".model-container");
-      const spotLight = new THREE.SpotLight(0xffffff, 2);
-      const loader = new GLTFLoader();
-      const scene = new THREE.Scene();
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
+    setup3DModel() {
+      const model3D = new Model3D("drone.gltf", ".model-container", () => {
+        model3Dcanvas = document.querySelector(".model-container > canvas");
+        extraTitle = document.querySelector(".extra-title");
+        model3Dcanvas.style.left = "-20px";
+        extraTitle.style.left = "0px";
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          model3D.width = this.modelWidth;
+          model3D.height = this.modelHeight;
+          model3D.cameraPositionZ = this.cameraPositionZ;
+          model3D.animate();
+        };
+        animate();
       });
-      let camera = new THREE.PerspectiveCamera(
-        this.fov,
-        this.modelWidth / this.modelHeight,
-        this.near,
-        this.far
-      );
-
-      // config setup
-      camera.position.z = this.cameraPositionZ;
-      const xyz = [100, 10, 100];
-      spotLight.position.set(...xyz);
-      scene.add(spotLight);
-      renderer.setSize(this.modelWidth, this.modelHeight);
-      renderer.render(scene, camera);
-      container?.appendChild(renderer.domElement);
-
-      model3Dcanvas = document.querySelector(".model-container > canvas");
-      extraTitle = document.querySelector(".extra-title");
-
-      // 3d model load
-      loader.load(
-        "drone.gltf",
-        (gltf: any) => {
-          model3D = gltf.scene;
-          scene.add(model3D);
-          camera.updateProjectionMatrix();
-          renderer.render(scene, camera);
-          model3Dcanvas.style.left = "-20px";
-          extraTitle.style.left = "0px";
-        },
-        undefined,
-        (error: any) => console.log(error)
-      );
-
-      /**
-       * THIS - WINDOW RESIZE EVENT LISTENER - HAS BEEN MUTED FROM HERE AND IT HAS BEEN
-       * REPLACED BY CODE FRAGMENT IN ANIMATE FUNCTION CAUSE THE RENDER OF REACTIVE PROPERTIES
-       * DOES NOT COME AT TIME AND NEED TO BE ACTIVATE TWICE ON RESIZE WINDOW EVENT.
-       *
-       */
-
-      // event listeners
-      // const onWindowResize = () => {
-      //   camera = new THREE.PerspectiveCamera(
-      //     this.fov,
-      //     this.modelWidth / this.modelHeight,
-      //     this.near,
-      //     this.far
-      //   );
-      //   camera.position.z = this.cameraPositionZ;
-      //   renderer.setSize(this.modelWidth, this.modelHeight);
-      //   renderer.render(scene, camera);
-      // };
-      // window.addEventListener("resize", onWindowResize);
-
-      const animate = () => {
-        requestAnimationFrame(animate);
-        if (model3D != undefined) {
-          this.droneUpDown();
-          this.droneLeftRight();
-          this.droneRotate();
-        }
-
-        /**
-         * THIS CODE FRAGMENT IS USED BY REPLACEMENT TO THE - WINDOW RESIZE EVENT LISTENER - .
-         * THIS MAY CAUSE TROUBLE DUE TO THE PROCESSING OVERLOADING
-         * IN ANIMATE FUNCTION.
-         * ANIMATE FUNCTION IS PERFORMED ALL THE TIME.
-         *
-         */
-
-        camera = new THREE.PerspectiveCamera(
-          this.fov,
-          this.modelWidth / this.modelHeight,
-          this.near,
-          this.far
-        );
-        camera.position.z = this.cameraPositionZ;
-        renderer.setSize(this.modelWidth, this.modelHeight);
-        renderer.render(scene, camera);
-      };
-      animate();
     },
-    droneFullRotate() {
-      model3D.rotation.y += rotationSpeed;
-    },
-    droneRotate() {
-      if (rotation) {
-        model3D.rotation.y += rotationSpeed;
-        if (model3D.rotation.y >= rotationLimit) rotation = false;
-      } else {
-        model3D.rotation.y -= rotationSpeed;
-        if (model3D.rotation.y <= -rotationLimit) rotation = true;
-      }
-    },
-    droneUpDown() {
-      if (upDown) {
-        model3D.position.y += upDownSpeed;
-        if (model3D.position.y >= upDownLimit) upDown = false;
-      } else {
-        model3D.position.y -= upDownSpeed;
-        if (model3D.position.y <= 0) upDown = true;
-      }
-    },
-    droneLeftRight() {
-      if (leftRight) {
-        model3D.rotation.z += leftRightSpeed;
-        if (model3D.rotation.z >= leftRightLimit) leftRight = false;
-      } else {
-        model3D.rotation.z -= leftRightSpeed;
-        if (model3D.rotation.z <= -leftRightLimit) leftRight = true;
-      }
-    },
-
     backgroundStyle(index: number) {
       return (
         `top: calc(1000px * ${index} - 64px);` +
@@ -302,7 +174,7 @@ export default Vue.extend({
     },
   },
   mounted() {
-    this.droneSetup();
+    this.setup3DModel();
     this.onWindowScroll();
   },
 });
