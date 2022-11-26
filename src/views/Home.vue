@@ -133,6 +133,13 @@ export default Vue.extend({
   },
   methods: {
     setup3DModel() {
+      /**
+       * CREATE MODEL 3D OBJECT AND LOAD IT
+       * -FIRST ARGUMENT IS 3D MODEL PATH
+       * -SECOND ARGUMEMNT IS 3D MODEL CONTAINER CLASS NAME
+       * -THIRD ARGUMENT IS LOAD CALLBACK THAT IS  CALLED STRAIGHT AFTER
+       * THE 3D MODEL IS LOAD
+       */
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
         model3Dcanvas = document.querySelector(".model-container > canvas");
         extraTitle = document.querySelector(".extra-title");

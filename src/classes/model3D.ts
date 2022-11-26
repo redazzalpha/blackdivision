@@ -7,20 +7,29 @@ export default class Model3D {
     width = 320;
     height = 150;
 
-    rotationYSpeed = 0.001;
+    rotationXSpeed = 0.0007;
+    rotationYSpeed = 0.0008;
     rotationZSpeed = 0.0005;
-    upDownSpeed = 0.00005;
+    upDownSpeed = 0.00001;
+    leftRightSpeed = 0.00003;
 
+    rotationXLimit = 0.12;
     rotationYLimit = 0.1;
     rotationZLimit = 0.1;
     upDownLimit = 0.01;
+    leftRightLimit = 0.01;
 
+    rotationXDir = true;
     rotationYDir = true;
     rotationZDir = true;
+    leftRightDir = true;
     upDownDir = true;
 
+    fullRotationYOn = false;
+    rotationXOn = true;
     rotationYOn = true;
     rotationZOn = true;
+    leftRightOn = true;
     upDownOn = true;
 
     fov = 75;
@@ -73,9 +82,12 @@ export default class Model3D {
     }
     animate() {
         if (this.model3D != undefined) {
-            this.upDown();
-            this.rotationZ();
+            this.fullRotationY();
+            this.rotationX();
             this.rotationY();
+            this.rotationZ();
+            this.leftRight();
+            this.upDown();
         }
         this.renderAnimate();
     }
@@ -91,7 +103,19 @@ export default class Model3D {
         this.renderer.render(this.scene, this.camera);
     }
     fullRotationY() {
-        this.model3D.rotation.y += this.rotationYSpeed;
+        if (this.fullRotationYOn)
+            this.model3D.rotation.y += this.rotationYSpeed;
+    }
+    rotationX() {
+        if (this.rotationXOn) {
+            if (this.rotationXDir) {
+                this.model3D.rotation.x += this.rotationXSpeed;
+                if (this.model3D.rotation.x >= this.rotationXLimit) this.rotationXDir = false;
+            } else {
+                this.model3D.rotation.x -= this.rotationXSpeed;
+                if (this.model3D.rotation.x <= -this.rotationXLimit) this.rotationXDir = true;
+            }
+        }
     }
     rotationY() {
         if (this.rotationYOn) {
@@ -115,6 +139,17 @@ export default class Model3D {
             }
         }
     }
+    leftRight() {
+        if (this.leftRightOn) {
+            if (this.leftRightDir) {
+                this.model3D.position.x += this.leftRightSpeed;
+                if (this.model3D.position.x >= this.leftRightLimit) this.leftRightDir = false;
+            } else {
+                this.model3D.position.x -= this.leftRightSpeed;
+                if (this.model3D.position.x <= -this.leftRightLimit) this.leftRightDir = true;
+            }
+        }
+    }
     upDown() {
         if (this.upDownOn) {
             if (this.upDownDir) {
@@ -122,7 +157,7 @@ export default class Model3D {
                 if (this.model3D.position.y >= this.upDownLimit) this.upDownDir = false;
             } else {
                 this.model3D.position.y -= this.upDownSpeed;
-                if (this.model3D.position.y <= 0) this.upDownDir = true;
+                if (this.model3D.position.y <= -this.upDownLimit) this.upDownDir = true;
             }
         }
     }
