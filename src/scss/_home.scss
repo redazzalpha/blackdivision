@@ -1,37 +1,58 @@
 @import "mixins";
 
 .home-container {
-    .model-container {
-        overflow-x: hidden;
+    .bg-1 {
+        color: white;
 
-        canvas {
+        .model-container {
+            overflow-x: hidden;
             position: relative;
-            left: $drone-start-position;
-            transition: $drone-transition;
+            top: 90px;
+
+            canvas {
+                position: relative;
+                left: $drone-start-position;
+                transition: $drone-transition;
+            }
+        }
+
+        .glow-container {
+            .glow {
+                position: absolute;
+                width: $glow-size;
+                height: $glow-size;
+                border-radius: $border-round;
+                background-color: $glow-color;
+                box-shadow: $glow-shadow-off;
+                opacity: 0;
+            }
+        }
+
+        .content-container {
+            position: relative;
+            overflow-x: hidden;
+
+            .extra-title {
+                position: relative;
+                left: $extra-title-start-position;
+                text-shadow: $extra-title-shadow;
+                transition: $extra-title-transition;
+            }
         }
     }
 
-    .glow-container {
-        .glow {
-            position: absolute;
-            width: $glow-size;
-            height: $glow-size;
-            border-radius: $border-round;
-            background-color: $glow-color;
-            box-shadow: $glow-shadow-off;
-            opacity: 0;
-        }
-    }
+    .bg-2 {
+        color: white;
 
-    .content-container {
-        position: relative;
-        overflow-x: hidden;
-
-        .extra-title {
+        .content-container {
             position: relative;
-            left: $extra-title-start-position;
-            text-shadow: $extra-title-shadow;
-            transition: $extra-title-transition;
+            top: 150px;
+            margin: 0 15px;
+
+            .extra-title {
+                opacity: 0;
+                transition: opacity 2s linear;
+            }
         }
     }
 }

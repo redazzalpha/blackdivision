@@ -1,32 +1,40 @@
 <template>
   <!-- home main container-->
   <div class="home-container white--text">
-    <!-- backgrounds -->
-    <img
-      v-for="(background, index) in backgrounds"
-      :key="background.href"
-      :src="background.href"
-      :style="backgroundStyle(index)"
-    />
+    <!-- backgrounds-1 -->
+    <v-img class="bg-1" :src="backgrounds[0].href" :style="backgroundStyle(0)">
+      <!-- drone 3d model -->
+      <div class="model-container"></div>
 
-    <!-- drone 3d model -->
-    <div class="model-container"></div>
+      <!-- glow container -->
+      <div class="glow-container" :style="glowContainerHeight">
+        <span class="glow glow-animate"></span>
+        <span class="glow glow-animate1"></span>
+        <span class="glow glow-animate2"></span>
+        <span class="glow glow-animate3"></span>
+        <span class="glow glow-animate4"></span>
+      </div>
 
-    <!-- glow container -->
-    <div class="glow-container" :style="glowContainerStyle">
-      <span class="glow glow-animate"></span>
-      <span class="glow glow-animate1"></span>
-      <span class="glow glow-animate2"></span>
-      <span class="glow glow-animate3"></span>
-      <span class="glow glow-animate4"></span>
-    </div>
+      <!-- content container -->
+      <div class="content-container">
+        <h2 class="extra-title text-center" :style="extraFontSize">
+          La puissance des drônes au bout des doigts
+        </h2>
+      </div>
+    </v-img>
 
-    <!-- page content container -->
-    <div class="content-container">
-      <h1 class="extra-title text-center" :style="extraTitleStyle">
-        La puissance des drônes au bout des doigts
-      </h1>
-    </div>
+    <!-- backgrounds-2 -->
+    <v-img class="bg-2" :src="backgrounds[1].href" :style="backgroundStyle(1)">
+      <!-- content container -->
+      <div class="content-container">
+        <h2 class="extra-title" :style="extraFontSize">
+          Réalisez des vidéos haute qualité avec nos drôneurs professionnels
+        </h2>
+      </div>
+    </v-img>
+
+    <!-- backgrounds-3 -->
+    <v-img :src="backgrounds[2].href" :style="backgroundStyle(2)"> </v-img>
   </div>
 </template>
 
@@ -36,6 +44,7 @@ import Model3D from "@/classes/model3D";
 
 let model3Dcanvas: any;
 let extraTitle: any;
+let extraTitle1: any;
 
 export default Vue.extend({
   name: "Home-page",
@@ -89,23 +98,23 @@ export default Vue.extend({
       }
     },
 
-    extraTitleStyle() {
+    extraFontSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "font-size: 40px";
+          return "font-size: 32px";
         case "sm":
-          return "font-size: 40px";
+          return "font-size: 32px";
         case "md":
           return "font-size: 48px";
         case "lg":
-          return "font-size: 60px";
+          return "font-size: 56px";
         case "xl":
-          return "font-size: 60px";
+          return "font-size: 56px";
         default:
           return "font-size: 64px";
       }
     },
-    glowContainerStyle() {
+    glowContainerHeight() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
           return "height: 250px";
@@ -143,6 +152,7 @@ export default Vue.extend({
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
         model3Dcanvas = document.querySelector(".model-container > canvas");
         extraTitle = document.querySelector(".extra-title");
+        extraTitle1 = document.querySelector(".bg-2 .extra-title");
         model3Dcanvas.style.left = "-20px";
         extraTitle.style.left = "0px";
 
@@ -168,17 +178,30 @@ export default Vue.extend({
     },
     onWindowScroll() {
       const onScroll = () => {
-        // animation on scroll window
-        if (window.scrollY >= 400) {
-          model3Dcanvas.style.left = "-600px";
-          extraTitle.style.left = "2000px";
-        } else {
-          model3Dcanvas.style.left = "-20px";
-          extraTitle.style.left = "0px";
-        }
+        this.bg1Scroll();
+        this.bg2Scroll();
       };
       window.addEventListener("scroll", onScroll);
     },
+    bg1Scroll() {
+      if (window.scrollY >= 400) {
+        if (model3Dcanvas) model3Dcanvas.style.left = "-600px";
+        if (extraTitle) extraTitle.style.left = "2000px";
+      } else {
+        if (model3Dcanvas) model3Dcanvas.style.left = "-20px";
+        if (extraTitle) extraTitle.style.left = "0px";
+      }
+    },
+    bg2Scroll() {
+      if (window.scrollY >= 415 && window.scrollY <= 1205) {
+        if (extraTitle1) extraTitle1.style.opacity = "1";
+      } else {
+        if (extraTitle) extraTitle1.style.opacity = "0";
+      }
+    },
+    bg3Scroll() {
+      //
+    }
   },
   mounted() {
     this.setup3DModel();
