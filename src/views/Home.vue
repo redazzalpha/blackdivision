@@ -178,6 +178,7 @@ export default Vue.extend({
     },
     onWindowScroll() {
       const onScroll = () => {
+        
         this.bg1Scroll();
         this.bg2Scroll();
       };
@@ -201,7 +202,7 @@ export default Vue.extend({
     },
     bg3Scroll() {
       //
-    }
+    },
   },
   mounted() {
     this.setup3DModel();

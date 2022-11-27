@@ -1,0 +1,14 @@
+.cursor {
+    position: absolute;
+    display: inline-block;
+    pointer-events: none;
+    top: 60vh;
+    left: 60vw;
+    z-index: 7;
+    opacity: 0;
+    width: $cursor-width;
+    height: $cursor-height;
+    border-radius: $border-round;
+    box-shadow: $cursor-shadow;
+    transition: $cursor-transition;
+}

@@ -4,10 +4,25 @@
 @import "variables.scss";
 @import "keyframes";
 
-h1, h2 {
-    font-family: $font-title;
+html {
+    cursor: none!important;
+    #wrapper {
+
+        a, button, [type=button] {
+            cursor: none;   
+        }
+        h1, h2 {
+            font-family: $font-title;
+        }
+    }
 }
 
+a:hover .cursor  {
+    border: solid red 3px;
+}
+// a:hover .cursor, button:hover .cursor, [type=button]:hover .cursor {
+//     opacity: 0.5!important;
+// }
 
 // #wrapper {
 //     background-image: url("./assets/bg.webp");
