@@ -62,6 +62,7 @@ export default class Model3D {
         this.spotLight.position.set(100, 10, 100);
         this.scene.add(this.spotLight);
         this.renderer.setSize(this.width, this.height);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.render(this.scene, this.camera);
         container?.appendChild(this.renderer.domElement);
         this.canvas = this.renderer.domElement;
@@ -100,6 +101,7 @@ export default class Model3D {
         );
         this.camera.position.z = this.cameraPositionZ;
         this.renderer.setSize(this.width, this.height);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.render(this.scene, this.camera);
     }
     fullRotationY() {
