@@ -6,17 +6,9 @@
       <!-- drone 3d model -->
       <div class="model-container"></div>
 
-      <!-- glow container -->
-      <div class="glow-container" :style="glowContainerHeight">
-        <span class="glow glow-animate"></span>
-        <span class="glow glow-animate1"></span>
-        <span class="glow glow-animate2"></span>
-        <span class="glow glow-animate3"></span>
-        <span class="glow glow-animate4"></span>
-      </div>
-
       <!-- content container -->
       <div class="content-container">
+        <div class="padding" :style="paddingHeight"></div>
         <h2 class="extra-title text-center" :style="extraFontSize">
           La puissance des drônes au bout des doigts
         </h2>
@@ -34,7 +26,12 @@
     </v-img>
 
     <!-- backgrounds-3 -->
-    <v-img :src="backgrounds[2].href" :style="backgroundStyle(2)"> </v-img>
+    <v-img class="bg-3" :src="backgrounds[2].href" :style="backgroundStyle(2)">
+      <!-- content container -->
+      <div class="content-container"></div>
+    </v-img>
+
+
   </div>
 </template>
 
@@ -114,7 +111,7 @@ export default Vue.extend({
           return "font-size: 64px";
       }
     },
-    glowContainerHeight() {
+    paddingHeight() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
           return "height: 250px";
@@ -178,7 +175,6 @@ export default Vue.extend({
     },
     onWindowScroll() {
       const onScroll = () => {
-        
         this.bg1Scroll();
         this.bg2Scroll();
       };

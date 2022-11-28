@@ -1,5 +1,3 @@
-@import "mixins";
-
 .home-container {
     .bg-1 {
         color: white;
@@ -13,18 +11,6 @@
                 position: relative;
                 left: $drone-start-position;
                 transition: $drone-transition;
-            }
-        }
-
-        .glow-container {
-            .glow {
-                position: absolute;
-                width: $glow-size;
-                height: $glow-size;
-                border-radius: $border-round;
-                background-color: $glow-color;
-                box-shadow: $glow-shadow-off;
-                opacity: 0;
             }
         }
 
@@ -55,70 +41,7 @@
             }
         }
     }
+
+    .bg-3 {}
 }
 
-.glow-animate {
-    $animationClass: "glow-animate";
-    $duration: "6s";
-    $delay: "6s";
-    $top: 32%;
-    $left: 60%;
-    $invert: false;
-
-    top: $top;
-    left: $left;
-    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
-}
-
-.glow-animate1 {
-    $animationClass: "glow-animate1";
-    $duration: "8s";
-    $delay: "2s";
-    $top: 47%;
-    $left: 20%;
-    $invert: true;
-
-    top: $top;
-    left: $left;
-    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
-
-}
-
-.glow-animate2 {
-    $animationClass: "glow-animate2";
-    $duration: "7.5s";
-    $delay: "9s";
-    $top: 72%;
-    $left: 30%;
-    $invert: false;
-
-    top: $top;
-    left: $left;
-    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
-}
-
-.glow-animate3 {
-    $animationClass: "glow-animate3";
-    $duration: "5.5s";
-    $delay: "4s";
-    $top: 61%;
-    $left: 50%;
-    $invert: true;
-
-    top: $top;
-    left: $left;
-    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
-}
-
-.glow-animate4 {
-    $animationClass: "glow-animate4";
-    $duration: "7s";
-    $delay: "12s";
-    $top: 90%;
-    $left: 85%;
-    $invert: false;
-
-    top: $top;
-    left: $left;
-    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
-}

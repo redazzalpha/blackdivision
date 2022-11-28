@@ -2,7 +2,7 @@
     @keyframes glowUpDown-#{$animationClass} {
         @if($invert) {
             0% {
-                top: calc(#{$top} + #{$glow-animation-offset})
+                top: calc(#{$top} + #{$glow-animation-distance})
             }
 
             100% {
@@ -12,7 +12,7 @@
 
         @else {
             0% {
-                top: calc(#{$top} - #{$glow-animation-offset})
+                top: calc(#{$top} - #{$glow-animation-distance})
             }
 
             100% {
@@ -24,7 +24,7 @@
     @keyframes glowLeftRight-#{$animationClass} {
         @if($invert) {
             0% {
-                left: calc(#{$left} + #{$glow-animation-offset})
+                left: calc(#{$left} + #{$glow-animation-distance})
             }
 
             100% {
@@ -34,7 +34,7 @@
 
         @else {
             0% {
-                left: calc(#{$left} - #{$glow-animation-offset})
+                left: calc(#{$left} - #{$glow-animation-distance})
             }
 
             100% {
@@ -44,6 +44,6 @@
     }
 
     animation: glowing #{$duration} infinite alternate ease-in-out #{$delay},
-    glowUpDown-#{$animationClass} 5s infinite ease alternate #{$delay},
-    glowLeftRight-#{$animationClass} 3s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate #{$delay};
+    glowUpDown-#{$animationClass} $glow-animation-up-down-duration infinite ease alternate #{$delay},
+    glowLeftRight-#{$animationClass} $glow-animation-left-right-duration infinite cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate #{$delay};
 }

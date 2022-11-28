@@ -1,0 +1,96 @@
+@import "mixins";
+
+.glow-container {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    transition: opacity 3s linear;
+
+    .glow {
+        position: absolute;
+        width: $glow-size;
+        height: $glow-size;
+        border-radius: $border-round;
+        background-color: $glow-color;
+        box-shadow: $glow-shadow-off;
+        opacity: 0;
+    }
+}
+
+
+.glow-animate {
+    $animationClass: "glow-animate";
+    $duration: "6s";
+    $delay: "3s";
+    $top: 506px;
+    $left: 20%;
+    $invert: false;
+    // border: solid blue 3px;
+
+    top: $top;
+    left: $left;
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
+}
+
+.glow-animate1 {
+    $animationClass: "glow-animate1";
+    $duration: "4s";
+    $delay: "8s";
+    $top: 456px;
+    $left: 30%;
+    $invert: true;
+    // border: solid green 3px;
+
+
+    top: $top;
+    left: $left;
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
+
+}
+
+.glow-animate2 {
+    $animationClass: "glow-animate2";
+    $duration: "7.5s";
+    $delay: "14s";
+    $top: 739px;
+    $left: 50%;
+    $invert: false;
+    // border: solid white 3px;
+
+
+    top: $top;
+    left: $left;
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
+}
+
+.glow-animate3 {
+    $animationClass: "glow-animate3";
+    $duration: "5.5s";
+    $delay: "4s";
+    $top: 203px;
+    $left: 50%;
+    $invert: true;
+    // border: solid yellow 3px;
+
+    top: $top;
+    left: $left;
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
+}
+
+.glow-animate4 {
+    $animationClass: "glow-animate4";
+    $duration: "7s";
+    $delay: "10s";
+    $top: 450px;
+    $left: 85%;
+    $invert: false;
+    // border: solid red 3px;
+
+    top: $top;
+    left: $left;
+    @include animation-glow($animationClass, $duration, $delay, $top, $left, $invert);
+}
+
+
+

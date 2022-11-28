@@ -11,9 +11,9 @@ export default Vue.extend({
     setup() {
       let cursor: any = document.querySelector(".cursor");
       document.addEventListener("mousemove", (evt) => {
+        cursor.style.opacity = 1;
         cursor.style.top = (evt.pageY - 25) + "px";
         cursor.style.left = (evt.pageX - 25) + "px";
-        cursor.style.opacity = 1;
       });
       document.body.addEventListener("mouseleave", (evt) => {
         cursor.style.opacity = 0;

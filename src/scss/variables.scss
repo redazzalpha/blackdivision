@@ -46,7 +46,9 @@ inset -3px 0 50px #0ff,
 // glow
 $glow-size: 5px;
 $glow-color: #fff;
-$glow-animation-offset: 100px;
+$glow-animation-distance: 200px;
+$glow-animation-up-down-duration: 10s;
+$glow-animation-left-right-duration: 8s;
 $glow-shadow-off: 0 0 0px 0px #fff, 0 0 0px 0px #f0f, 0 0 0px 0px #0ff;
 $glow-shadow-on: 0 0 21px 11px #fff, 0 0 31px 13px #f0f, 0 0 35px 15px #0ff;
 

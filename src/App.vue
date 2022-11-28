@@ -1,7 +1,6 @@
 <template>
   <!-- main wrapper -->
   <v-app id="wrapper">
-
     <!-- app-bar-->
     <AppbarCpn @clicked="drawer = !drawer" />
 
@@ -23,8 +22,15 @@
         </v-container>
       </section>
     </v-main>
+
+    <!-- scroll top button -->
     <ScrollTopBtnCpn />
+
+    <!-- cursor  -->
     <CursorCpn />
+
+    <!-- glows -->
+    <GlowsCpn />
   </v-app>
 </template>
 
@@ -34,8 +40,7 @@ import AppbarCpn from "@/components/Appbar-cpn.vue";
 import DrawerCpn from "@/components/Drawer-cpn.vue";
 import ScrollTopBtnCpn from "@/components/ScrollTopBtn-cpn.vue";
 import CursorCpn from "@/components/Cursor-cpn.vue";
-
-let cursor: any;
+import GlowsCpn from "@/components/Glows-cpn.vue";
 
 export default Vue.extend({
   name: "App",
@@ -44,6 +49,7 @@ export default Vue.extend({
     DrawerCpn,
     ScrollTopBtnCpn,
     CursorCpn,
+    GlowsCpn,
   },
   data() {
     return {
