@@ -26,10 +26,10 @@
             </h2>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row class="mt-10">
           <v-col>
             <v-img
-              class="ml-sm-auto"
+              class="img-bg-2 ml-sm-auto"
               src="../assets/img1.jpg"
               :style="imgStyle"
             ></v-img>
@@ -50,8 +50,9 @@
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
 
-let extraTitle: any;
-let extraTitle1: any;
+let extraTitleBg1: any;
+let extraTitleBg2: any;
+let img1Bg2: any;
 
 export default Vue.extend({
   name: "Home-page",
@@ -165,6 +166,11 @@ export default Vue.extend({
     };
   },
   methods: {
+    setup() {
+      extraTitleBg1 = document.querySelector(".bg-1 .extra-title");
+      extraTitleBg2 = document.querySelector(".bg-2 .extra-title");
+      img1Bg2 = document.querySelector(".bg-2 .img-bg-2");
+    },
     setup3DModel() {
       /**
        * CREATE MODEL 3D OBJECT AND LOAD IT
@@ -174,9 +180,7 @@ export default Vue.extend({
        * THE 3D MODEL IS LOAD
        */
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
-        extraTitle = document.querySelector(".extra-title");
-        extraTitle1 = document.querySelector(".bg-2 .extra-title");
-        extraTitle.style.left = "0px";
+        extraTitleBg1.style.left = "0px";
 
         const animate = () => {
           requestAnimationFrame(animate);
@@ -207,16 +211,18 @@ export default Vue.extend({
     },
     bg1Scroll() {
       if (window.scrollY >= 400) {
-        if (extraTitle) extraTitle.style.left = "2000px";
+        if (extraTitleBg1) extraTitleBg1.style.left = "2000px";
       } else {
-        if (extraTitle) extraTitle.style.left = "0px";
+        if (extraTitleBg1) extraTitleBg1.style.left = "0px";
       }
     },
     bg2Scroll() {
       if (window.scrollY >= 415 && window.scrollY <= 1205) {
-        if (extraTitle1) extraTitle1.style.opacity = "1";
+        if (extraTitleBg2) extraTitleBg2.style.opacity = "1";
+        if (img1Bg2) img1Bg2.style.opacity = "1";
       } else {
-        if (extraTitle) extraTitle1.style.opacity = "0";
+        if (extraTitleBg2) extraTitleBg2.style.opacity = "0";
+        if (img1Bg2) img1Bg2.style.opacity = "0";
       }
     },
     bg3Scroll() {
@@ -224,12 +230,13 @@ export default Vue.extend({
     },
   },
   mounted() {
+    this.setup();
     this.setup3DModel();
     this.onWindowScroll();
   },
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/scss/home";
 </style>

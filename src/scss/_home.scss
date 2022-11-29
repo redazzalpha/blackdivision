@@ -7,7 +7,7 @@
             position: relative;
             top: 90px;
 
-            canvas {
+            &:deep(canvas) {
                 position: relative;
                 left: $drone-start-position;
                 transition: $drone-transition;
@@ -36,6 +36,10 @@
             .extra-title {
                 opacity: $extra-title-bg2-opacity;
                 transition: $extra-title-bg2-transition;
+            }
+            .img-bg-2 {
+                opacity: $img1-bg2-opacity;
+                transition: $img1-bg2-transition;
             }
         }
     }
