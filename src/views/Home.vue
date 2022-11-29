@@ -50,7 +50,6 @@
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
 
-let model3Dcanvas: any;
 let extraTitle: any;
 let extraTitle1: any;
 
@@ -175,10 +174,8 @@ export default Vue.extend({
        * THE 3D MODEL IS LOAD
        */
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
-        model3Dcanvas = document.querySelector(".model-container > canvas");
         extraTitle = document.querySelector(".extra-title");
         extraTitle1 = document.querySelector(".bg-2 .extra-title");
-        model3Dcanvas.style.left = "-20px";
         extraTitle.style.left = "0px";
 
         const animate = () => {
@@ -210,10 +207,8 @@ export default Vue.extend({
     },
     bg1Scroll() {
       if (window.scrollY >= 400) {
-        if (model3Dcanvas) model3Dcanvas.style.left = "-600px";
         if (extraTitle) extraTitle.style.left = "2000px";
       } else {
-        if (model3Dcanvas) model3Dcanvas.style.left = "-20px";
         if (extraTitle) extraTitle.style.left = "0px";
       }
     },

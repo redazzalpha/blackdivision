@@ -66,6 +66,13 @@ export default class Model3D {
         this.renderer.render(this.scene, this.camera);
         container?.appendChild(this.renderer.domElement);
         this.canvas = this.renderer.domElement;
+
+        const onWindowScroll = () => {
+            if (window.scrollY >= 400) this.canvas.style.left = "-600px";
+            else this.canvas.style.left = "-20px";
+        }
+        window.addEventListener("scroll", onWindowScroll);
+
     }
     load3D(modelPath: string, loadCallBack?: () => void) {
         this.loader.load(
@@ -75,6 +82,7 @@ export default class Model3D {
                 this.scene.add(this.model3D);
                 this.camera.updateProjectionMatrix();
                 this.renderer.render(this.scene, this.camera);
+                this.canvas.style.left = "-20px";
                 if (loadCallBack) loadCallBack();
             },
             undefined,
