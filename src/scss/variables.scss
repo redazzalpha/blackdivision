@@ -1,5 +1,5 @@
 /*
-* GROUP VARIABLES
+* GROUP BASES
 */
 
 // font family
@@ -24,9 +24,11 @@ $color-nav-link-hover: #ff0000;
 // border
 $border-size: 3px;
 $border-round: 50%;
-$border-nav-link-active: solid $color-tertiary $border-size !important;
-$border-nav-link-hover: solid $color-primary $border-size;
-$border-nav-link-hidden: solid transparent $border-size;
+
+/*
+* GROUP ELEMENT
+*/
+
 
 // cursor
 $cursor-size-base: 50px;
@@ -52,25 +54,29 @@ $glow-animation-left-right-duration: 8s;
 $glow-shadow-off: 0 0 0px 0px #fff, 0 0 0px 0px #f0f, 0 0 0px 0px #0ff;
 $glow-shadow-on: 0 0 21px 11px #fff, 0 0 31px 13px #f0f, 0 0 35px 15px #0ff;
 
-// extra title
-$extra-title-shadow: 3px 1px 2px mediumblue;
-
-/*
-* SECTION VARIABLES
-*/
-
-// start positions
-$drone-start-position: -600px;
-$extra-title-start-position: 2000px;
-
-// transitions
-$base-transition: left 1.5s linear;
-$drone-transition: $base-transition;
-$extra-title-transition: $base-transition;
+// header
 $header-transition: opacity 1s linear;
+
+// nav link
+$border-nav-link-active: solid $color-tertiary $border-size !important;
+$border-nav-link-hover: solid $color-primary $border-size;
+$border-nav-link-hidden: solid transparent $border-size;
 $nav-link-transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95),
     border-bottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
+// drone
+$drone-start-position: -600px;
+$drone-transition: left 1.5s linear;
+
+// extra title bg 1
+$extra-title-bg1-shadow: 3px 1px 2px mediumblue;
+$extra-title-bg1-start-position: 2000px;
+$extra-title-bg1-transition: left 1.5s linear;
+
+// extra title bg 2
+
+$extra-title-bg2-opacity: 0;
+$extra-title-bg2-transition: opacity 2s ease-in;
 
 
 
@@ -84,35 +90,3 @@ $nav-link-transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95),
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// $color-appbar-icon: white;
-// $color-appbar-text: white;
-// $color-btn-scroll-top: #00ACC1;
-
-// // sizes
-// $size-appbar-logo: 2.5rem;
-// $size-appbar-icon: 15px;
-// $size-logo-title-home: 55px;
-
-// // widths
-// $width-access-dialog: 500px;
-
-// // heights
-// $height-editor-content: 250px;
-
-// // margins
-// $textarea-box-enclosed-single-outlined-margin-top: 13px;
-
-// // transformations
-// $btn-text-transform: unset !default;

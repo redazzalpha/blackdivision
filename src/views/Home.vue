@@ -18,11 +18,24 @@
     <!-- backgrounds-2 -->
     <v-img class="bg-2" :src="backgrounds[1].href" :style="backgroundStyle(1)">
       <!-- content container -->
-      <div class="content-container">
-        <h2 class="extra-title" :style="extraFontSize">
-          Réalisez des vidéos haute qualité avec nos drôneurs professionnels
-        </h2>
-      </div>
+      <v-container class="content-container">
+        <v-row>
+          <v-col>
+            <h2 class="extra-title" :style="extraFontSize">
+              Réalisez des vidéos haute qualité avec nos drôneurs professionnels
+            </h2>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-img
+              class="ml-sm-auto"
+              src="../assets/img1.jpg"
+              :style="imgStyle"
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-img>
 
     <!-- backgrounds-3 -->
@@ -30,8 +43,6 @@
       <!-- content container -->
       <div class="content-container"></div>
     </v-img>
-
-
   </div>
 </template>
 
@@ -46,6 +57,23 @@ let extraTitle1: any;
 export default Vue.extend({
   name: "Home-page",
   computed: {
+    imgStyle() {
+      let style = "border-radius: 15px; box-shadow: 10px 10px 30px 5px black;";
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return style + "width: 100%;";
+        case "sm":
+          return style + "width: 70%;";
+        case "md":
+          return style + "width: 50%;";
+        case "lg":
+          return style + "width: 50%;";
+        case "xl":
+          return style + "width: 50%; height: 90%";
+        default:
+          return style + "width: 50%; height: 50%";
+      }
+    },
     modelWidth() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

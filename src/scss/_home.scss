@@ -20,9 +20,9 @@
 
             .extra-title {
                 position: relative;
-                left: $extra-title-start-position;
-                text-shadow: $extra-title-shadow;
-                transition: $extra-title-transition;
+                left: $extra-title-bg1-start-position;
+                text-shadow: $extra-title-bg1-shadow;
+                transition: $extra-title-bg1-transition;
             }
         }
     }
@@ -31,17 +31,14 @@
         color: white;
 
         .content-container {
-            position: relative;
-            top: 150px;
-            margin: 0 15px;
+            margin-top: 150px;
 
             .extra-title {
-                opacity: 0;
-                transition: opacity 2s linear;
+                opacity: $extra-title-bg2-opacity;
+                transition: $extra-title-bg2-transition;
             }
         }
     }
 
     .bg-3 {}
 }
-
