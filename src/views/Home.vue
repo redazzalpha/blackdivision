@@ -44,17 +44,24 @@
       <!-- content container -->
       <div class="content-container">
         <!-- drone container -->
-        <div class="drone-container">
-          <v-img class="drone" src="../assets/img2.png" max-width="350"></v-img>
+        <div class="drone-container" :style="droneContainerTop">
           <v-img
-            class="light"
+            class="drone-img"
+            src="../assets/img2.png"
+            max-width="350"
+          ></v-img>
+          <v-img
+            class="light-img"
             src="../assets/light.png"
             max-width="350"
           ></v-img>
         </div>
 
         <!-- extra title -->
-        <h2 class="extra-title text-center" :style="extraFontSize">
+        <h2
+          class="extra-title text-center"
+          :style="[extraFontSize, extraTitleTop]"
+        >
           Devenez votre propre réalisateur en louant un de nos appareils
         </h2>
       </div>
@@ -65,15 +72,49 @@
 <script lang="ts">
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
-import { ExtraTitle, Img } from "@/utils/types";
+import { ExtraTitle, Img, DroneContainer } from "@/utils/types";
 
 let extraTitleBg1: ExtraTitle;
 let extraTitleBg2: ExtraTitle;
+let extraTitleBg3: ExtraTitle;
 let img1Bg2: Img;
+let droneContainer: DroneContainer;
 
 export default Vue.extend({
   name: "Home-page",
   computed: {
+    droneContainerTop() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return { top: "0px" };
+        case "sm":
+          return { top: "-200px" };
+        case "md":
+          return { top: "-200px" };
+        case "lg":
+          return { top: "-200px" };
+        case "xl":
+          return { top: "-200px" };
+        default:
+          return { top: "0px" };
+      }
+    },
+    extraTitleTop() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return { top: "775px" };
+        case "sm":
+          return { top: "600px" };
+        case "md":
+          return { top: "600px" };
+        case "lg":
+          return { top: "600px" };
+        case "xl":
+          return { top: "600px" };
+        default:
+          return { top: "-200px" };
+      }
+    },
     imgStyle() {
       let style = "border-radius: 15px; box-shadow: 10px 10px 30px 5px black;";
       switch (this.$vuetify.breakpoint.name) {
@@ -143,17 +184,17 @@ export default Vue.extend({
     extraFontSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "font-size: 32px";
+          return { fontSize: "32px" };
         case "sm":
-          return "font-size: 32px";
+          return { fontSize: "32px" };
         case "md":
-          return "font-size: 48px";
+          return { fontSize: "48px" };
         case "lg":
-          return "font-size: 56px";
+          return { fontSize: "56px" };
         case "xl":
-          return "font-size: 56px";
+          return { fontSize: "56px" };
         default:
-          return "font-size: 64px";
+          return { fontSize: "64px" };
       }
     },
     paddingHeight() {
@@ -186,7 +227,9 @@ export default Vue.extend({
     setup() {
       extraTitleBg1 = document.querySelector(".bg-1 .extra-title");
       extraTitleBg2 = document.querySelector(".bg-2 .extra-title");
+      extraTitleBg3 = document.querySelector(".bg-3 .extra-title");
       img1Bg2 = document.querySelector(".bg-2 .img-bg-2");
+      droneContainer = document.querySelector(".bg-3 .drone-container");
     },
     setup3DModel() {
       /**
@@ -223,27 +266,34 @@ export default Vue.extend({
       const onScroll = () => {
         this.bg1Scroll();
         this.bg2Scroll();
+        this.bg3Scroll();
       };
       window.addEventListener("scroll", onScroll);
     },
     bg1Scroll() {
       if (window.scrollY >= 400) {
-        if (extraTitleBg1) extraTitleBg1.style.left = "2000px";
+        extraTitleBg1.style.left = "2000px";
       } else {
-        if (extraTitleBg1) extraTitleBg1.style.left = "0px";
+        extraTitleBg1.style.left = "0px";
       }
     },
     bg2Scroll() {
-      if (window.scrollY >= 415 && window.scrollY <= 1205) {
-        if (extraTitleBg2) extraTitleBg2.style.opacity = "1";
-        if (img1Bg2) img1Bg2.style.opacity = "1";
+      if (window.scrollY >= 415 && window.scrollY <= 1405) {
+        extraTitleBg2.style.opacity = "1";
+        img1Bg2.style.opacity = "1";
       } else {
-        if (extraTitleBg2) extraTitleBg2.style.opacity = "0";
-        if (img1Bg2) img1Bg2.style.opacity = "0";
+        extraTitleBg2.style.opacity = "0";
+        img1Bg2.style.opacity = "0";
       }
     },
     bg3Scroll() {
-      //
+      if (window.scrollY >= 1405 && window.scrollY <= 2395) {
+        droneContainer.style.opacity = "1";
+        extraTitleBg3.style.opacity = "1";
+      } else {
+        droneContainer.style.opacity = "0";
+        extraTitleBg3.style.opacity = "0";
+      }
     },
   },
   mounted() {

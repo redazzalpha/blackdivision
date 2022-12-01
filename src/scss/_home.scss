@@ -37,7 +37,6 @@
                 opacity: $extra-title-bg2-opacity;
                 transition: $extra-title-bg2-transition;
                 text-shadow: $extra-title-shadow;
-
             }
 
             .img-bg-2 {
@@ -54,27 +53,31 @@
 
             .drone-container {
                 position: relative;
+                opacity: $drone-container-opacity;
+                transition: $drone-container-transition;
 
-                .drone {
+                .drone-img {
                     position: absolute;
-                    top: 350px;
-                    width: 315px;
-                    animation: $drone-animation;
+                    top: $drone-img-bg-3-top;
+                    width: $drone-img-bg-3-width;
+                    animation: $drone-img-bg-3-animation;
                 }
 
-                .light {
+                .light-img {
                     position: absolute;
-                    top: 460px;
-                    left: 140px;
-                    width: 220px;
-                    transform-origin: 68px 0px 0px;
-                    animation: $light-animation;
+                    top: $light-img-bg-3-top;
+                    left: $light-img-bg-3-left;
+                    width: $light-img-bg-3-width;
+                    transform-origin: $light-img-bg-3-transform-origin;
+                    animation: $light-img-bg-3-animation;
                 }
             }
 
             .extra-title {
+                position: relative;
                 text-shadow: $extra-title-shadow;
-                padding-top: 775px;
+                opacity: $extra-title-bg3-opacity;
+                transition: $extra-title-bg3-transition;
             }
         }
     }
