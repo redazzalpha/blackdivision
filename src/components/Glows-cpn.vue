@@ -11,8 +11,9 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { GlowContainer } from "@/utils/types";
 
-let glowContainer: any;
+let glowContainer: GlowContainer;
 
 export default Vue.extend({
   name: "Glows-cpn",

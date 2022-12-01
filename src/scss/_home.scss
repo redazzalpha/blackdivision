@@ -21,7 +21,7 @@
             .extra-title {
                 position: relative;
                 left: $extra-title-bg1-start-position;
-                text-shadow: $extra-title-bg1-shadow;
+                text-shadow: $extra-title-shadow;
                 transition: $extra-title-bg1-transition;
             }
         }
@@ -36,7 +36,10 @@
             .extra-title {
                 opacity: $extra-title-bg2-opacity;
                 transition: $extra-title-bg2-transition;
+                text-shadow: $extra-title-shadow;
+
             }
+
             .img-bg-2 {
                 opacity: $img1-bg2-opacity;
                 transition: $img1-bg2-transition;
@@ -44,5 +47,35 @@
         }
     }
 
-    .bg-3 {}
+    .bg-3 {
+        color: white;
+
+        .content-container {
+
+            .drone-container {
+                position: relative;
+
+                .drone {
+                    position: absolute;
+                    top: 350px;
+                    width: 315px;
+                    animation: $drone-animation;
+                }
+
+                .light {
+                    position: absolute;
+                    top: 460px;
+                    left: 140px;
+                    width: 220px;
+                    transform-origin: 68px 0px 0px;
+                    animation: $light-animation;
+                }
+            }
+
+            .extra-title {
+                text-shadow: $extra-title-shadow;
+                padding-top: 775px;
+            }
+        }
+    }
 }

@@ -21,6 +21,7 @@
       <v-container class="content-container">
         <v-row>
           <v-col>
+            <!-- extra title -->
             <h2 class="extra-title" :style="extraFontSize">
               Réalisez des vidéos haute qualité avec nos drôneurs professionnels
             </h2>
@@ -41,7 +42,22 @@
     <!-- backgrounds-3 -->
     <v-img class="bg-3" :src="backgrounds[2].href" :style="backgroundStyle(2)">
       <!-- content container -->
-      <div class="content-container"></div>
+      <div class="content-container">
+        <!-- drone container -->
+        <div class="drone-container">
+          <v-img class="drone" src="../assets/img2.png" max-width="350"></v-img>
+          <v-img
+            class="light"
+            src="../assets/light.png"
+            max-width="350"
+          ></v-img>
+        </div>
+
+        <!-- extra title -->
+        <h2 class="extra-title text-center" :style="extraFontSize">
+          Devenez votre propre réalisateur en louant un de nos appareils
+        </h2>
+      </div>
     </v-img>
   </div>
 </template>
@@ -49,10 +65,11 @@
 <script lang="ts">
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
+import { ExtraTitle, Img } from "@/utils/types";
 
-let extraTitleBg1: any;
-let extraTitleBg2: any;
-let img1Bg2: any;
+let extraTitleBg1: ExtraTitle;
+let extraTitleBg2: ExtraTitle;
+let img1Bg2: Img;
 
 export default Vue.extend({
   name: "Home-page",
@@ -161,7 +178,7 @@ export default Vue.extend({
       backgrounds: [
         { href: require("../assets/bg.webp") },
         { href: require("../assets/bg.jpg") },
-        { href: require("../assets/bg1.webp") },
+        { href: require("../assets/bg1.png") },
       ],
     };
   },

@@ -68,12 +68,10 @@ $nav-link-transition: color 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95),
 $drone-start-position: -600px;
 $drone-transition: left 1.5s linear;
 
-// extra title bg 1
-$extra-title-bg1-shadow: 3px 1px 2px mediumblue;
+// extra title 
+$extra-title-shadow: 3px 1px 2px mediumblue;
 $extra-title-bg1-start-position: 2000px;
 $extra-title-bg1-transition: left 1.5s linear;
-
-// extra title bg 2
 $extra-title-bg2-opacity: 0;
 $extra-title-bg2-transition: opacity 2s ease-in;
 
@@ -81,6 +79,12 @@ $extra-title-bg2-transition: opacity 2s ease-in;
 
 $img1-bg2-opacity: 0; 
 $img1-bg2-transition: opacity 3s ease-in; 
+
+// drone img bg 2
+$drone-animation: grow-shrink 3s infinite alternate linear;
+
+// light img bg 2
+$light-animation: light-search 7s infinite alternate linear;
 
 
 

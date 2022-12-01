@@ -1,7 +1,7 @@
 @keyframes glowing {
     0% {
         box-shadow: $glow-shadow-off;
-        opacity: 0;    
+        opacity: 0;
     }
 
     50% {
@@ -13,3 +13,24 @@
         opacity: 1;
     }
 }
+
+@keyframes light-search {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes grow-shrink {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(1.1, 1.1);
+    }
+}
+

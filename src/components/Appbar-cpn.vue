@@ -13,18 +13,18 @@
 
     <!-- nav -->
     <nav class="d-none d-md-block flex-grow-1">
-      <v-container
-        fluid
-        grid-list-xs
-        :style="navContainerStyle"
-      >
+      <v-container fluid grid-list-xs :style="navContainerStyle">
         <v-row class="" no-gutters>
           <v-col
             v-for="link in links"
             :key="link.label"
             class="nav-link text-center flex-grow"
           >
-            <router-link :to="link.href" class="link pb-1" activeClass="nav-link-active">
+            <router-link
+              :to="link.href"
+              class="link pb-1"
+              activeClass="nav-link-active"
+            >
               {{ link.label }}
             </router-link>
           </v-col>
@@ -64,8 +64,11 @@ export default Vue.extend({
       }
     },
     showAppBarNavIcon() {
-      return this.$vuetify.breakpoint.name == 'xs' || this.$vuetify.breakpoint.name == 'sm';
-    }
+      return (
+        this.$vuetify.breakpoint.name == "xs" ||
+        this.$vuetify.breakpoint.name == "sm"
+      );
+    },
   },
   data() {
     return {
@@ -83,13 +86,12 @@ export default Vue.extend({
     },
     showAppbar() {
       const header = document.querySelector("header");
-    if (header) {
-      setTimeout(() => {
-        header.style.opacity = "1";
-      }, 1500);
-    }
-
-    }
+      if (header) {
+        setTimeout(() => {
+          header.style.opacity = "1";
+        }, 1500);
+      }
+    },
   },
   mounted() {
     this.showAppbar();

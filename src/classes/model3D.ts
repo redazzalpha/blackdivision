@@ -1,9 +1,11 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import  { Canvas, Model, Gltf } from "@/utils/types";
+
 
 export default class Model3D {
-    canvas: any;
-    model3D: any;
+    canvas: Canvas;
+    model3D: Model;
     width = 320;
     height = 150;
 
@@ -70,14 +72,14 @@ export default class Model3D {
         const onWindowScroll = () => {
             if (window.scrollY >= 400) this.canvas.style.left = "-600px";
             else this.canvas.style.left = "-20px";
-        }
+        };
         window.addEventListener("scroll", onWindowScroll);
 
     }
     load3D(modelPath: string, loadCallBack?: () => void) {
         this.loader.load(
             modelPath,
-            (gltf: any) => {
+            (gltf: Gltf) => {
                 this.model3D = gltf.scene;
                 this.scene.add(this.model3D);
                 this.camera.updateProjectionMatrix();
@@ -86,7 +88,7 @@ export default class Model3D {
                 if (loadCallBack) loadCallBack();
             },
             undefined,
-            (error: any) => console.log(error)
+            (error: Error) => console.log(error)
         );
     }
     animate() {
