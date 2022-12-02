@@ -60,8 +60,9 @@ export default Vue.extend({
     return {
       links: [
         { label: "Accueil", icon: "mdi-home", href: "/home" },
-        { label: "Nos drônes", icon: "mdi-quadcopter", href: "/drones" },
+        { label: "Prestation", icon: "mdi-video", href: "/prestation" },
         { label: "Location", icon: "mdi-calendar-edit", href: "/location" },
+        { label: "Nos drônes", icon: "mdi-quadcopter", href: "/drones" },
         { label: "Contacts", icon: "mdi-contacts", href: "/contacts" },
       ],
     };

@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
-import Drones from '../views/Drones.vue';
+import Prestation from '../views/Prestation.vue';
 import Location from '../views/Location.vue';
+import Drones from '../views/Drones.vue';
 import Contacts from '../views/Contacts.vue';
 import Notfound from '../views/Notfound.vue';
 
@@ -19,14 +20,19 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: '/drones',
-    name: 'drones',
-    component: Drones
+    path: '/prestation',
+    name: 'prestation',
+    component: Prestation
   },
   {
     path: '/location',
     name: 'location',
     component: Location
+  },
+  {
+    path: '/drones',
+    name: 'drones',
+    component: Drones
   },
   {
     path: '/contacts',

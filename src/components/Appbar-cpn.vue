@@ -13,8 +13,8 @@
 
     <!-- nav -->
     <nav class="d-none d-md-block flex-grow-1">
-      <v-container fluid grid-list-xs :style="navContainerStyle">
-        <v-row class="" no-gutters>
+      <v-container fluid grid-list-xs :style="navContainerMaxWidth">
+        <v-row no-gutters>
           <v-col
             v-for="link in links"
             :key="link.label"
@@ -47,16 +47,16 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Appbar-cpn",
   computed: {
-    navContainerStyle() {
+    navContainerMaxWidth() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
           return "max-width: 50%";
         case "sm":
           return "max-width: 100%";
         case "md":
-          return "max-width: 75%";
+          return "max-width: 100%";
         case "lg":
-          return "max-width: 50%";
+          return "max-width: 70%";
         case "xl":
           return "max-width: 50%";
         default:
@@ -74,8 +74,9 @@ export default Vue.extend({
     return {
       links: [
         { label: "Accueil", href: "/home" },
-        { label: "Nos drônes", href: "/drones" },
+        { label: "Prestation", href: "/prestation" },
         { label: "Location", href: "/location" },
+        { label: "Nos drônes", href: "/drones" },
         { label: "Contacts", href: "/contacts" },
       ],
     };
