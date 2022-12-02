@@ -3,9 +3,12 @@
 .glow-container {
     position: absolute;
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
     top: 0px;
     left: 0px;
     transition: opacity 3s linear;
+
 
     .glow {
         position: absolute;

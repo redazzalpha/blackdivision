@@ -20,6 +20,7 @@ export default Vue.extend({
   methods: {
     setup() {
       glowContainer = document.querySelector(".glow-container");
+      console.log(glowContainer)
     },
     onWindowScroll() {
       const onScroll = () => {
@@ -29,7 +30,6 @@ export default Vue.extend({
           glowContainer.style.top = "1000px";
         } else if (window.scrollY >= 1206) {
           glowContainer.style.top = "2000px";
-          //
         }
 
         glowContainer.style.opacity = "0";
