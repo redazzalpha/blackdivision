@@ -36,7 +36,7 @@ $offsetTop: 90px;
 $cursor-size-base: 50px;
 $cursor-width: $cursor-size-base;
 $cursor-height: $cursor-size-base;
-$cursor-transition-time-base: 0.11s;
+$cursor-transition-time-base: 0.05s;
 $cursor-animation: rotate 2s infinite linear;
 $cursor-transition: top $cursor-transition-time-base linear, left $cursor-transition-time-base linear, opacity 0.5s linear;
 $cursor-shadow: inset 0 0 8px #fff,

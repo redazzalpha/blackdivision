@@ -63,7 +63,7 @@
         <!-- extra title -->
         <h2
           class="extra-title text-center"
-          :style="[extraFontSize, extraTitleTop]"
+          :style="[extraFontSize]"
         >
           Devenez votre propre réalisateur en louant un de nos appareils
         </h2>
@@ -87,22 +87,6 @@ let droneContainer: DroneContainer;
 export default Vue.extend({
   name: "Home-page",
   computed: {
-    extraTitleTop() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return { top: "775px" };
-        case "sm":
-          return { top: "600px" };
-        case "md":
-          return { top: "600px" };
-        case "lg":
-          return { top: "600px" };
-        case "xl":
-          return { top: "600px" };
-        default:
-          return { top: "-200px" };
-      }
-    },
     extraFontSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
@@ -341,7 +325,7 @@ export default Vue.extend({
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundAttachmen: "fixed",
-        backgroundColor: "grey ",
+        backgroundColor: "#03091b",
       };
     },
     onWindowScroll() {
