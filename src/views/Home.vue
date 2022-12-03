@@ -65,7 +65,7 @@
           class="extra-title text-center"
           :style="[extraFontSize]"
         >
-          Devenez votre propre réalisateur en louant un de nos appareils
+          Devenez votre propre réalisateur en pilotant un de nos appareils
         </h2>
       </div>
     </div>

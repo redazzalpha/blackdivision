@@ -9,7 +9,9 @@
     scroll-threshold="100"
   >
     <!-- logo -->
-    <div class="logo">BlackDivision9</div>
+    <router-link to="/home" style="text-decoration: unset; color: white">
+      <div class="logo">BlackDivision9</div>
+    </router-link>
 
     <!-- nav -->
     <nav class="d-none d-md-block flex-grow-1">

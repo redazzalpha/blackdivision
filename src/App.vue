@@ -26,6 +26,9 @@
       </section>
     </v-main>
 
+    <!-- footer -->
+    <FooterCpn />
+
     <!-- scroll top button -->
     <ScrollTopBtnCpn />
 
@@ -41,6 +44,7 @@ import DrawerCpn from "@/components/Drawer-cpn.vue";
 import ScrollTopBtnCpn from "@/components/ScrollTopBtn-cpn.vue";
 import CursorCpn from "@/components/Cursor-cpn.vue";
 import GlowsCpn from "@/components/Glows-cpn.vue";
+import FooterCpn from "@/components/footer-cpn.vue";
 
 export default Vue.extend({
   name: "App",
@@ -50,6 +54,7 @@ export default Vue.extend({
     ScrollTopBtnCpn,
     CursorCpn,
     GlowsCpn,
+    FooterCpn,
   },
   data() {
     return {
