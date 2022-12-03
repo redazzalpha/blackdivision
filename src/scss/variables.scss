@@ -25,6 +25,9 @@ $color-nav-link-hover: #ff0000;
 $border-size: 3px;
 $border-round: 50%;
 
+// offset
+$offsetTop: 90px;
+
 /*
 * GROUP ELEMENT
 */
@@ -73,14 +76,9 @@ $img1-bg2-opacity: 0;
 $img1-bg2-transition: opacity 2s ease-in;
 
 // drone img bg 3
-$drone-img-bg-3-top: 350px;
-$drone-img-bg-3-width: 315px;
 $drone-img-bg-3-animation: grow-shrink 3s infinite alternate linear;
 
 // light img bg 3
-$light-img-bg-3-top: 460px;
-$light-img-bg-3-left: 140px;
-$light-img-bg-3-width: 220px;
 $light-img-bg-3-transform-origin: 68px 0px 0px;
 $light-img-bg-3-animation: light-search 7s infinite alternate linear;
 

@@ -10,4 +10,6 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+@import "@/scss/prestation";
+</style>

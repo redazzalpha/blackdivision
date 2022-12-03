@@ -3,12 +3,13 @@
 @import "fonts";
 @import "variables.scss";
 @import "keyframes";
-// @import "mixins";
 
 html {
     cursor: none !important;
 
     #wrapper {
+        background-color: $color-dark-blue;
+
         a,
         button,
         [type=button] {

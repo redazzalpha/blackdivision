@@ -71,7 +71,7 @@ export default class Model3D {
 
         const onWindowScroll = () => {
             if (window.scrollY >= 400) this.canvas.style.left = "-600px";
-            else this.canvas.style.left = "-20px";
+            else this.canvas.style.left = "0px";
         };
         window.addEventListener("scroll", onWindowScroll);
 
@@ -84,7 +84,7 @@ export default class Model3D {
                 this.scene.add(this.model3D);
                 this.camera.updateProjectionMatrix();
                 this.renderer.render(this.scene, this.camera);
-                this.canvas.style.left = "-20px";
+                this.canvas.style.left = "0px";
                 if (loadCallBack) loadCallBack();
             },
             undefined,

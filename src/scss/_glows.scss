@@ -8,8 +8,6 @@
     top: 0px;
     left: 0px;
     transition: opacity 3s linear;
-
-
     .glow {
         position: absolute;
         width: $glow-size;
@@ -29,7 +27,6 @@
     $top: 506px;
     $left: 20%;
     $invert: false;
-    // border: solid blue 3px;
 
     top: $top;
     left: $left;
@@ -43,7 +40,6 @@
     $top: 456px;
     $left: 30%;
     $invert: true;
-    // border: solid green 3px;
 
 
     top: $top;
@@ -59,7 +55,6 @@
     $top: 739px;
     $left: 50%;
     $invert: false;
-    // border: solid white 3px;
 
 
     top: $top;
@@ -74,7 +69,6 @@
     $top: 203px;
     $left: 50%;
     $invert: true;
-    // border: solid yellow 3px;
 
     top: $top;
     left: $left;
@@ -88,7 +82,6 @@
     $top: 450px;
     $left: 85%;
     $invert: false;
-    // border: solid red 3px;
 
     top: $top;
     left: $left;

@@ -50,17 +50,17 @@ export default Vue.extend({
     navContainerMaxWidth() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "max-width: 50%";
+          return {maxWidth: '50%' };
         case "sm":
-          return "max-width: 100%";
+          return {maxWidth: '100%' };
         case "md":
-          return "max-width: 100%";
+          return {maxWidth: '100%' };
         case "lg":
-          return "max-width: 70%";
+          return {maxWidth: '70%' };
         case "xl":
-          return "max-width: 50%";
+          return {maxWidth: '50%' };
         default:
-          return "max-width: 50%";
+          return {maxWidth: '50%' };
       }
     },
     showAppBarNavIcon() {

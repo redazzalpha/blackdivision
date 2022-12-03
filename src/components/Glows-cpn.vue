@@ -20,7 +20,6 @@ export default Vue.extend({
   methods: {
     setup() {
       glowContainer = document.querySelector(".glow-container");
-      console.log(glowContainer)
     },
     onWindowScroll() {
       const onScroll = () => {
@@ -47,6 +46,6 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/scss/glows";
 </style>

@@ -1,11 +1,11 @@
 .home-container {
-    .bg-1 {
-        color: white;
+    color: white;
+
+    .bg-1-block {
+        @extend %wide-screen;   
 
         .model-container {
-            overflow-x: hidden;
-            position: relative;
-            top: 90px;
+            @extend %offset-top;
 
             &:deep(canvas) {
                 position: relative;
@@ -15,8 +15,7 @@
         }
 
         .content-container {
-            position: relative;
-            overflow-x: hidden;
+            @extend %offset-top;
 
             .extra-title {
                 position: relative;
@@ -27,16 +26,15 @@
         }
     }
 
-    .bg-2 {
-        color: white;
+    .bg-2-block {
+        @extend %wide-screen;
 
         .content-container {
-            margin-top: 150px;
-
             .extra-title {
+                margin-top: 150px;
                 opacity: $extra-title-bg2-opacity;
-                transition: $extra-title-bg2-transition;
                 text-shadow: $extra-title-shadow;
+                transition: $extra-title-bg2-transition;
             }
 
             .img-bg-2 {
@@ -46,39 +44,46 @@
         }
     }
 
-    .bg-3 {
-        color: white;
+    .bg-3-block {
+        @extend %wide-screen;
 
         .content-container {
+            position: relative;
+            border: solid transparent 3px; // need this border to remove white space from margin-top drone container 
 
             .drone-container {
-                position: relative;
                 opacity: $drone-container-opacity;
                 transition: $drone-container-transition;
 
                 .drone-img {
-                    position: absolute;
-                    top: $drone-img-bg-3-top;
-                    width: $drone-img-bg-3-width;
+                    position: relative;
                     animation: $drone-img-bg-3-animation;
                 }
 
                 .light-img {
-                    position: absolute;
-                    top: $light-img-bg-3-top;
-                    left: $light-img-bg-3-left;
-                    width: $light-img-bg-3-width;
+                    position: relative;
                     transform-origin: $light-img-bg-3-transform-origin;
                     animation: $light-img-bg-3-animation;
                 }
             }
 
             .extra-title {
-                position: relative;
+                background-color: transparent;
                 text-shadow: $extra-title-shadow;
                 opacity: $extra-title-bg3-opacity;
                 transition: $extra-title-bg3-transition;
             }
         }
     }
+}
+
+%wide-screen {
+    width: 100vw;
+    height: 1000px;
+}
+
+%offset-top {
+    position: relative;
+    top: $offsetTop;
+    overflow-x: hidden;
 }

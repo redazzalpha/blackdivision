@@ -1,22 +1,23 @@
 <template>
   <!-- home main container-->
-  <div class="home-container white--text">
-    <!-- backgrounds-1 -->
-    <v-img class="bg-1" :src="backgrounds[0].href" :style="backgroundStyle(0)">
+  <div class="home-container">
+    <!-- backgrounds block 1 -->
+    <div class="bg-1-block" :style="blockBgStyle(0)">
       <!-- drone 3d model -->
       <div class="model-container"></div>
 
       <!-- content container -->
       <div class="content-container">
         <div class="padding" :style="paddingHeight"></div>
+
         <h2 class="extra-title text-center" :style="extraFontSize">
           La puissance des drônes au bout des doigts
         </h2>
       </div>
-    </v-img>
+    </div>
 
-    <!-- backgrounds-2 -->
-    <v-img class="bg-2" :src="backgrounds[1].href" :style="backgroundStyle(1)">
+    <!-- backgrounds block 2 -->
+    <div class="bg-2-block" :style="blockBgStyle(1)">
       <!-- content container -->
       <v-container class="content-container">
         <v-row>
@@ -37,23 +38,25 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-img>
+    </div>
 
-    <!-- backgrounds-3 -->
-    <v-img class="bg-3" :src="backgrounds[2].href" :style="backgroundStyle(2)">
+    <!-- backgrounds block 3 -->
+    <div class="bg-3-block" :style="blockBgStyle(2)">
       <!-- content container -->
       <div class="content-container">
         <!-- drone container -->
-        <div class="drone-container" :style="droneContainerTop">
+        <div class="drone-container" :style="droneContainerStyle">
+          <!-- drone img-->
           <v-img
             class="drone-img"
             src="../assets/img2.png"
-            max-width="350"
+            :style="droneImgWidth"
           ></v-img>
+          <!-- light img -->
           <v-img
             class="light-img"
             src="../assets/light.png"
-            max-width="350"
+            :style="lightImgStyle"
           ></v-img>
         </div>
 
@@ -65,7 +68,8 @@
           Devenez votre propre réalisateur en louant un de nos appareils
         </h2>
       </div>
-    </v-img>
+    </div>
+
   </div>
 </template>
 
@@ -83,22 +87,6 @@ let droneContainer: DroneContainer;
 export default Vue.extend({
   name: "Home-page",
   computed: {
-    droneContainerTop() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return { top: "0px" };
-        case "sm":
-          return { top: "-200px" };
-        case "md":
-          return { top: "-200px" };
-        case "lg":
-          return { top: "-200px" };
-        case "xl":
-          return { top: "-200px" };
-        default:
-          return { top: "0px" };
-      }
-    },
     extraTitleTop() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
@@ -115,22 +103,149 @@ export default Vue.extend({
           return { top: "-200px" };
       }
     },
-    imgStyle() {
-      let style = "border-radius: 15px; box-shadow: 10px 10px 30px 5px black;";
+    extraFontSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return style + "width: 100%;";
+          return { fontSize: "32px" };
         case "sm":
-          return style + "width: 70%;";
+          return { fontSize: "32px" };
         case "md":
-          return style + "width: 50%;";
+          return { fontSize: "48px" };
         case "lg":
-          return style + "width: 50%;";
+          return { fontSize: "56px" };
         case "xl":
-          return style + "width: 50%; height: 90%";
+          return { fontSize: "56px" };
         default:
-          return style + "width: 50%; height: 50%";
+          return { fontSize: "64px" };
       }
+    },
+    paddingHeight() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return { height: "250px" };
+        case "sm":
+          return { height: "250px" };
+        case "md":
+          return { height: "350px" };
+        case "lg":
+          return { height: "350px" };
+        case "xl":
+          return { height: "350px" };
+        default:
+          return { height: "354px" };
+      }
+    },
+    imgStyle() {
+      const style = {
+        borderRadius: "15px",
+        boxShadow: "10px 10px 30px 5px black",
+        width: "",
+        height: "",
+      };
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          style.width = "100%;";
+          break;
+        case "sm":
+          style.width = "70%;";
+          break;
+        case "md":
+          style.width = "50%;";
+          break;
+        case "lg":
+          style.width = "50%;";
+          break;
+        case "xl":
+          style.height = "90%";
+          style.width = "50%";
+          break;
+        default:
+          style.height = "50%";
+          style.width = "50%";
+      }
+      return style;
+    },
+    droneContainerStyle() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return { height: "350px", marginTop: "400px" };
+        case "sm":
+          return { height: "410px", marginTop: "300px" };
+        case "md":
+          return { height: "420px", marginTop: "300px" };
+        case "lg":
+          return { height: "430px", marginTop: "270px" };
+        case "xl":
+          return { height: "430px", marginTop: "270px" };
+        default:
+        return { height: "400px", marginTop: "350px" };
+      }
+    },
+    droneImgWidth() {
+      const style = {
+        width: "",
+      };
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          style.width = "290px";
+          break;
+        case "sm":
+          style.width = "315px";
+          break;
+        case "md":
+          style.width = "315px";
+          break;
+        case "lg":
+          style.width = "350px";
+          break;
+        case "xl":
+          style.width = "350px";
+          break;
+        default:
+          style.width = "290px";
+          break;
+      }
+      return style;
+    },
+    lightImgStyle() {
+      const style = {
+        top: "",
+        left: "",
+        width: "",
+      };
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          style.top = "-95px";
+          style.left = "145px";
+          style.width = "160px";
+          break;
+        case "sm":
+        style.top = "-100px";
+          style.left = "160px";
+          style.width = "170px";
+          break;
+        case "md":
+          style.top = "-100px";
+          style.left = "160px";
+          style.width = "170px";
+          break;
+        case "lg":
+        style.top = "-110px";
+          style.left = "175px";
+          style.width = "200px";
+          break;
+        case "xl":
+        style.top = "-110px";
+          style.left = "175px";
+          style.width = "200px";
+          break;
+        default:
+        style.top = "-95px";
+          style.left = "145px";
+          style.width = "160px";
+          break;
+      }
+      return style;
     },
     modelWidth() {
       switch (this.$vuetify.breakpoint.name) {
@@ -180,39 +295,6 @@ export default Vue.extend({
           return 0.27;
       }
     },
-
-    extraFontSize() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return { fontSize: "32px" };
-        case "sm":
-          return { fontSize: "32px" };
-        case "md":
-          return { fontSize: "48px" };
-        case "lg":
-          return { fontSize: "56px" };
-        case "xl":
-          return { fontSize: "56px" };
-        default:
-          return { fontSize: "64px" };
-      }
-    },
-    paddingHeight() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return "height: 250px";
-        case "sm":
-          return "height: 250px";
-        case "md":
-          return "height: 350px";
-        case "lg":
-          return "height: 350px";
-        case "xl":
-          return "height: 350px";
-        default:
-          return "height: 354px";
-      }
-    },
   },
   data() {
     return {
@@ -225,11 +307,11 @@ export default Vue.extend({
   },
   methods: {
     setup() {
-      extraTitleBg1 = document.querySelector(".bg-1 .extra-title");
-      extraTitleBg2 = document.querySelector(".bg-2 .extra-title");
-      extraTitleBg3 = document.querySelector(".bg-3 .extra-title");
-      img1Bg2 = document.querySelector(".bg-2 .img-bg-2");
-      droneContainer = document.querySelector(".bg-3 .drone-container");
+      extraTitleBg1 = document.querySelector(".bg-1-block .extra-title");
+      extraTitleBg2 = document.querySelector(".bg-2-block .extra-title");
+      extraTitleBg3 = document.querySelector(".bg-3-block .extra-title");
+      img1Bg2 = document.querySelector(".bg-2-block .img-bg-2");
+      droneContainer = document.querySelector(".bg-3-block .drone-container");
     },
     setup3DModel() {
       /**
@@ -252,15 +334,15 @@ export default Vue.extend({
         animate();
       });
     },
-    backgroundStyle(index: number) {
-      return (
-        `top: calc(1000px * ${index} - 64px);` +
-        "position: absolute;" +
-        "left: 0;" +
-        "width: 100vw;" +
-        "height: 1000px;" +
-        "object-fit: cover;"
-      );
+    blockBgStyle(index: number) {
+      return {
+        backgroundImage: `url(${this.backgrounds[index].href})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundAttachmen: "fixed",
+        backgroundColor: "grey ",
+      };
     },
     onWindowScroll() {
       const onScroll = () => {
@@ -287,7 +369,7 @@ export default Vue.extend({
       }
     },
     bg3Scroll() {
-      if (window.scrollY >= 1405 && window.scrollY <= 2395) {
+      if (window.scrollY >= 1405) {
         droneContainer.style.opacity = "1";
         extraTitleBg3.style.opacity = "1";
       } else {

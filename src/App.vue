@@ -12,9 +12,12 @@
       <!-- section -->
       <section>
         <!-- main container -->
-        <v-container grid-list-xs fluid>
+        <v-container class="main-container" grid-list-xs fluid>
           <v-row>
-            <v-col>
+            <v-col class="pa-0">
+              <!-- glows -->
+              <GlowsCpn />
+
               <!-- views -->
               <router-view />
             </v-col>
@@ -28,9 +31,6 @@
 
     <!-- cursor  -->
     <CursorCpn />
-
-    <!-- glows -->
-    <GlowsCpn />
   </v-app>
 </template>
 
