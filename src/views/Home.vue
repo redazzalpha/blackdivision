@@ -19,7 +19,7 @@
     <!-- backgrounds block 2 -->
     <div class="bg-2-block" :style="blockBgStyle(1)">
       <!-- content container -->
-      <v-container class="content-container" >
+      <v-container class="content-container">
         <v-row>
           <v-col>
             <!-- extra title -->
@@ -30,19 +30,17 @@
         </v-row>
 
         <v-row class="mt-10" justify-md="end">
-          <v-col class="d-flex justify-content-center order-2 order-md-1 mt-10 mt-md-auto my-auto">
+          <v-col
+            class="d-flex justify-content-center order-2 order-md-1 mt-10 mt-md-auto my-auto"
+          >
             <!-- call to action-->
-            <CtaCpn class="cta"/>
+            <CtaCpn label="Réserver une prestation" />
           </v-col>
 
           <v-col class="col-md-6 order-1 order-md-2">
-            <v-img
-              class="img-bg-2"
-              src="../assets/img1.jpg"
-            ></v-img>
+            <v-img class="img-bg-2" src="../assets/img1.jpg"></v-img>
           </v-col>
         </v-row>
-
       </v-container>
     </div>
 
@@ -70,6 +68,8 @@
         <h2 class="extra-title text-center" :style="[extraFontSize]">
           Devenez votre propre réalisateur en pilotant un de nos appareils
         </h2>
+
+        <CtaCpn class="mt-10" label="Faire une location" bgColor="009bf2" />
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@ import { ExtraTitle, Containers } from "@/utils/types";
 import CtaCpn from "@/components/Cta-cpn.vue";
 
 let extraTitleBg1: ExtraTitle;
-let contentContainers : Containers;
+let contentContainers: Containers;
 
 export default Vue.extend({
   name: "Home-page",
@@ -125,7 +125,7 @@ export default Vue.extend({
     droneContainerStyle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return { height: "350px", marginTop: "400px" };
+          return { height: "350px", marginTop: "100px" };
         case "sm":
           return { height: "410px", marginTop: "300px" };
         case "md":
