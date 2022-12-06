@@ -30,18 +30,17 @@
         @extend %wide-screen;
 
         .content-container {
+            opacity: $container-opacity;
+            transition: $container-transition;
+
             .extra-title {
                 margin-top: 150px;
-                opacity: $extra-title-bg2-opacity;
                 text-shadow: $extra-title-shadow;
-                transition: $extra-title-bg2-transition;
             }
 
             .img-bg-2 {
                 border-radius: 15px;
                 box-shadow: 10px 10px 30px 5px black;
-                opacity: $img1-bg2-opacity;
-                transition: $img1-bg2-transition;
             }
         }
     }
@@ -52,10 +51,11 @@
         .content-container {
             position: relative;
             border: solid transparent 3px; // need this border to remove white space from margin-top drone container 
+            opacity: $container-opacity;
+            transition: $container-transition;
+
 
             .drone-container {
-                opacity: $drone-container-opacity;
-                transition: $drone-container-transition;
 
                 .drone-img {
                     position: relative;
@@ -71,8 +71,6 @@
 
             .extra-title {
                 text-shadow: $extra-title-shadow;
-                opacity: $extra-title-bg3-opacity;
-                transition: $extra-title-bg3-transition;
             }
         }
     }

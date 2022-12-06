@@ -78,14 +78,11 @@
 <script lang="ts">
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
-import { ExtraTitle, Img, DroneContainer } from "@/utils/types";
+import { ExtraTitle, Containers } from "@/utils/types";
 import CtaCpn from "@/components/Cta-cpn.vue";
 
 let extraTitleBg1: ExtraTitle;
-let extraTitleBg2: ExtraTitle;
-let extraTitleBg3: ExtraTitle;
-let img1Bg2: Img;
-let droneContainer: DroneContainer;
+let contentContainers : Containers;
 
 export default Vue.extend({
   name: "Home-page",
@@ -268,10 +265,7 @@ export default Vue.extend({
   methods: {
     setup() {
       extraTitleBg1 = document.querySelector(".bg-1-block .extra-title");
-      extraTitleBg2 = document.querySelector(".bg-2-block .extra-title");
-      extraTitleBg3 = document.querySelector(".bg-3-block .extra-title");
-      img1Bg2 = document.querySelector(".bg-2-block .img-bg-2");
-      droneContainer = document.querySelector(".bg-3-block .drone-container");
+      contentContainers = document.querySelectorAll(".content-container");
     },
     setup3DModel() {
       /**
@@ -321,20 +315,16 @@ export default Vue.extend({
     },
     bg2Scroll() {
       if (window.scrollY >= 415 && window.scrollY <= 1405) {
-        extraTitleBg2.style.opacity = "1";
-        img1Bg2.style.opacity = "1";
+        contentContainers[1].style.opacity = "1";
       } else {
-        extraTitleBg2.style.opacity = "0";
-        img1Bg2.style.opacity = "0";
+        contentContainers[1].style.opacity = "0";
       }
     },
     bg3Scroll() {
       if (window.scrollY >= 1405) {
-        droneContainer.style.opacity = "1";
-        extraTitleBg3.style.opacity = "1";
+        contentContainers[2].style.opacity = "1";
       } else {
-        droneContainer.style.opacity = "0";
-        extraTitleBg3.style.opacity = "0";
+        contentContainers[2].style.opacity = "0";
       }
     },
   },
