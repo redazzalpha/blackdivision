@@ -10,7 +10,6 @@ html {
     #wrapper {
         background-color: $color-dark-blue;
         overflow: hidden;
-
         a,
         button,
         [type=button] {
@@ -22,4 +21,8 @@ html {
             font-family: $font-title;
         }
     }
+}
+* {
+    box-sizing: border-box;
+
 }

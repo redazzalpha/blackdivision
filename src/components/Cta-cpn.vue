@@ -1,6 +1,6 @@
 <template>
   <div class="cta-container">
-    <v-btn @click="clicked" >click me</v-btn>
+    <v-btn class="cta" @click="clicked" x-large>Réserver une prestation</v-btn>
   </div>
 </template>
 

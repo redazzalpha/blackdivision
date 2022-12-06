@@ -4,12 +4,12 @@
     <v-row tag='nav' justify="center" no-gutters>
       <v-btn
         v-for="link in links"
-        :key="link"
+        :key="link.label"
         :to="link.href"
         color="white"
         text
         rounded
-        class="my-2"
+        class="link my-2"
         style="font-family: 'Raleway', sans-serif; font-weight: bold; text-decoration: unset;"
       >
         {{ link.label }}
@@ -36,11 +36,11 @@ import Vue from "vue";
 export default Vue.extend({
   data: () => ({
     links: [
-      { label: "Accueil", href: "/home" },
-      { label: "Prestation", href: "/prestation" },
-      { label: "Location", href: "/location" },
-      { label: "Nos drônes", href: "/drones" },
-      { label: "Contacts", href: "/contacts" },
+      { label: "ACCUEIL", href: "/home" },
+      { label: "PRESTATION", href: "/prestation" },
+      { label: "LOCATION", href: "/location" },
+      { label: "NOS DRÔNES", href: "/drones" },
+      { label: "CONTACTS", href: "/contacts" },
     ],
   }),
 });

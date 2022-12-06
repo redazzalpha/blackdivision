@@ -19,7 +19,7 @@
     <!-- backgrounds block 2 -->
     <div class="bg-2-block" :style="blockBgStyle(1)">
       <!-- content container -->
-      <v-container class="content-container">
+      <v-container class="content-container" >
         <v-row>
           <v-col>
             <!-- extra title -->
@@ -28,15 +28,21 @@
             </h2>
           </v-col>
         </v-row>
-        <v-row class="mt-10">
-          <v-col>
+
+        <v-row class="mt-10" justify-md="end">
+          <v-col class="d-flex justify-content-center order-2 order-md-1 mt-10 mt-md-auto my-auto">
+            <!-- call to action-->
+            <CtaCpn class="cta"/>
+          </v-col>
+
+          <v-col class="col-md-6 order-1 order-md-2">
             <v-img
-              class="img-bg-2 ml-sm-auto"
+              class="img-bg-2"
               src="../assets/img1.jpg"
-              :style="imgStyle"
             ></v-img>
           </v-col>
         </v-row>
+
       </v-container>
     </div>
 
@@ -61,15 +67,11 @@
         </div>
 
         <!-- extra title -->
-        <h2
-          class="extra-title text-center"
-          :style="[extraFontSize]"
-        >
+        <h2 class="extra-title text-center" :style="[extraFontSize]">
           Devenez votre propre réalisateur en pilotant un de nos appareils
         </h2>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -77,6 +79,7 @@
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
 import { ExtraTitle, Img, DroneContainer } from "@/utils/types";
+import CtaCpn from "@/components/Cta-cpn.vue";
 
 let extraTitleBg1: ExtraTitle;
 let extraTitleBg2: ExtraTitle;
@@ -86,6 +89,9 @@ let droneContainer: DroneContainer;
 
 export default Vue.extend({
   name: "Home-page",
+  components: {
+    CtaCpn,
+  },
   computed: {
     extraFontSize() {
       switch (this.$vuetify.breakpoint.name) {
@@ -119,36 +125,6 @@ export default Vue.extend({
           return { height: "354px" };
       }
     },
-    imgStyle() {
-      const style = {
-        borderRadius: "15px",
-        boxShadow: "10px 10px 30px 5px black",
-        width: "",
-        height: "",
-      };
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          style.width = "100%;";
-          break;
-        case "sm":
-          style.width = "70%;";
-          break;
-        case "md":
-          style.width = "50%;";
-          break;
-        case "lg":
-          style.width = "50%;";
-          break;
-        case "xl":
-          style.height = "90%";
-          style.width = "50%";
-          break;
-        default:
-          style.height = "50%";
-          style.width = "50%";
-      }
-      return style;
-    },
     droneContainerStyle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
@@ -162,7 +138,7 @@ export default Vue.extend({
         case "xl":
           return { height: "430px", marginTop: "270px" };
         default:
-        return { height: "400px", marginTop: "350px" };
+          return { height: "400px", marginTop: "350px" };
       }
     },
     droneImgWidth() {
@@ -204,7 +180,7 @@ export default Vue.extend({
           style.width = "160px";
           break;
         case "sm":
-        style.top = "-100px";
+          style.top = "-100px";
           style.left = "160px";
           style.width = "170px";
           break;
@@ -214,17 +190,17 @@ export default Vue.extend({
           style.width = "170px";
           break;
         case "lg":
-        style.top = "-110px";
+          style.top = "-110px";
           style.left = "175px";
           style.width = "200px";
           break;
         case "xl":
-        style.top = "-110px";
+          style.top = "-110px";
           style.left = "175px";
           style.width = "200px";
           break;
         default:
-        style.top = "-95px";
+          style.top = "-95px";
           style.left = "145px";
           style.width = "160px";
           break;
@@ -321,11 +297,11 @@ export default Vue.extend({
     blockBgStyle(index: number) {
       return {
         backgroundImage: `url(${this.backgrounds[index].href})`,
+        backgroundColor: "#03091b",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundAttachmen: "fixed",
-        backgroundColor: "#03091b",
       };
     },
     onWindowScroll() {
