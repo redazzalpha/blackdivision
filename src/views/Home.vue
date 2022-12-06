@@ -125,7 +125,7 @@ export default Vue.extend({
     droneContainerStyle() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return { height: "350px", marginTop: "100px" };
+          return { height: "350px", marginTop: "150px" };
         case "sm":
           return { height: "410px", marginTop: "300px" };
         case "md":
@@ -257,8 +257,8 @@ export default Vue.extend({
     return {
       backgrounds: [
         { href: require("../assets/bg.webp") },
-        { href: require("../assets/bg.jpg") },
-        { href: require("../assets/bg1.png") },
+        { href: require("../assets/bg1.webp") },
+        { href: require("../assets/bg2.webp") },
       ],
     };
   },
