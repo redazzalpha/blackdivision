@@ -32,7 +32,7 @@
 
         <v-row class="mt-10" justify-md="end">
           <v-col
-            class="d-flex justify-content-center order-2 order-md-1 mt-10 mt-md-auto my-auto"
+            class="d-flex justify-content-center order-2 order-md-1 mt-10 "
           >
             <!-- call to action-->
             <CtaCpn label="Réserver une prestation" bgColor="f29400"/>
@@ -70,7 +70,7 @@
           Devenez votre propre réalisateur en pilotant un de nos appareils
         </h2>
 
-        <CtaCpn class="mt-10" label="Faire une location" bgColor="009bf2" />
+        <CtaCpn class="mt-10" label="Louer un drône" bgColor="009bf2" />
       </div>
     </div>
   </div>
@@ -299,7 +299,6 @@ export default Vue.extend({
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
         extraTitleBg1.style.left = "0px";
         ctaBg1.style.opacity = "1";
-
 
         const animate = () => {
           requestAnimationFrame(animate);
