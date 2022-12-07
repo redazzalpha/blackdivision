@@ -5,10 +5,11 @@
     <div class="bg-1-block" :style="blockBgStyle(0)">
       <!-- drone 3d model -->
       <div class="model-container"></div>
-
+      
       <!-- content container -->
       <div class="content-container">
-        <div class="padding" :style="paddingHeight"></div>
+        <CtaCpn class="bg-1-cta" label="Créer un compte" bgColor="ffffff" textColor="000000" :style="ctaTop"/>
+        <div class="padding" :style="paddingHeight" ></div>
 
         <h2 class="extra-title text-center" :style="extraFontSize">
           La puissance des drônes au bout des doigts
@@ -78,11 +79,12 @@
 <script lang="ts">
 import Vue from "vue";
 import Model3D from "@/classes/model3D";
-import { ExtraTitle, Containers } from "@/utils/types";
+import { ExtraTitle, Containers, Element } from "@/utils/types";
 import CtaCpn from "@/components/Cta-cpn.vue";
 
 let extraTitleBg1: ExtraTitle;
 let contentContainers: Containers;
+let ctaBg1: Element;
 
 export default Vue.extend({
   name: "Home-page",
@@ -109,17 +111,33 @@ export default Vue.extend({
     paddingHeight() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return { height: "250px" };
+          return { height: "150px" };
         case "sm":
           return { height: "250px" };
         case "md":
-          return { height: "350px" };
+          return { height: "150px" };
         case "lg":
-          return { height: "350px" };
+          return { height: "150px" };
         case "xl":
-          return { height: "350px" };
+          return { height: "200px" };
         default:
           return { height: "354px" };
+      }
+    },
+    ctaTop() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return { position: 'relative', top: "50px" };
+        case "sm":
+          return { position: 'relative', top: "0px" };
+        case "md":
+          return { position: 'relative', top: "-300px", left: '200px' };
+        case "lg":
+          return { position: 'relative', top: "-350px" };
+        case "xl":
+          return { position: 'relative', top: "-350px" };
+        default:
+          return { position: 'relative', top: "354px" };
       }
     },
     droneContainerStyle() {
@@ -266,6 +284,9 @@ export default Vue.extend({
     setup() {
       extraTitleBg1 = document.querySelector(".bg-1-block .extra-title");
       contentContainers = document.querySelectorAll(".content-container");
+      ctaBg1 = document.querySelector(".bg-1-cta");
+
+
     },
     setup3DModel() {
       /**
@@ -277,6 +298,8 @@ export default Vue.extend({
        */
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
         extraTitleBg1.style.left = "0px";
+        ctaBg1.style.opacity = "1";
+
 
         const animate = () => {
           requestAnimationFrame(animate);
@@ -308,9 +331,12 @@ export default Vue.extend({
     },
     bg1Scroll() {
       if (window.scrollY >= 400) {
+
         extraTitleBg1.style.left = "2000px";
+        ctaBg1.style.opacity = "0";
       } else {
         extraTitleBg1.style.left = "0px";
+        ctaBg1.style.opacity = "1";
       }
     },
     bg2Scroll() {

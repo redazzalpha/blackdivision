@@ -1,5 +1,7 @@
 <template>
+  <!-- footer -->
   <v-footer tag="footer" class="py-10 text-center" padless color="transparent">
+    <!-- footer nav row -->
     <v-row>
       <v-col class="col-12 col-sm-6">
         <v-container fluid>
@@ -24,10 +26,12 @@
                 </v-btn>
               </v-row>
 
+              <!-- follow us title row-->
               <v-row justify="center" no-gutter>
                 <v-col class="white--text"> Retrouvez-nous sur: </v-col>
               </v-row>
 
+              <!-- follow us links -->
               <v-row>
                 <v-col>
                   <v-btn
@@ -36,7 +40,6 @@
                     :href="link.href"
                     color="white "
                     icon
-                    plain
                     class="link ma-2"
                     style="
                       font-family: 'Raleway', sans-serif;

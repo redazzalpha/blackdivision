@@ -17,6 +17,11 @@
         .content-container {
             @extend %offset-top;
 
+            .bg-1-cta {
+                opacity: 0;
+                transition: $cta-transition;
+            }
+
             .extra-title {
                 position: relative;
                 left: $extra-title-bg1-start-position;

@@ -7,3 +7,4 @@ export type ExtraTitle = any | null;
 export type Img = any | null;
 export type DroneContainer = any | null;
 export type Containers = any | null;
+export type Element = any | null;
