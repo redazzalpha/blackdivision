@@ -34,7 +34,7 @@
             class="d-flex justify-content-center order-2 order-md-1 mt-10 mt-md-auto my-auto"
           >
             <!-- call to action-->
-            <CtaCpn label="Réserver une prestation" />
+            <CtaCpn label="Réserver une prestation" bgColor="f29400"/>
           </v-col>
 
           <v-col class="col-md-6 order-1 order-md-2">
