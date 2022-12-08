@@ -5,12 +5,28 @@
     <div class="bg-1-block" :style="blockBgStyle(0)">
       <!-- drone 3d model -->
       <div class="model-container"></div>
-      
+
       <!-- content container -->
       <div class="content-container">
-        <CtaCpn class="bg-1-cta" label="Créer un compte" bgColor="ffffff" textColor="000000" :style="ctaTop"/>
-        <div class="padding" :style="paddingHeight" ></div>
+        <!-- call to action -->
+        <CtaCpn
+          class="bg-1-cta"
+          label="Créer un compte"
+          bgColor="ffffff"
+          textColor="000000"
+          :style="ctaTop"
+        >
+          <template v-slot:bottom>
+            <router-link class="font-weight-bold" style="color: #ffffff" to="/prestation">
+              En savoir plus
+            </router-link>
+          </template>
+        </CtaCpn>
 
+        <!-- padding -->
+        <div class="padding" :style="paddingHeight"></div>
+
+        <!-- extra title -->
         <h2 class="extra-title text-center" :style="extraFontSize">
           La puissance des drônes au bout des doigts
         </h2>
@@ -21,23 +37,29 @@
     <div class="bg-2-block" :style="blockBgStyle(1)">
       <!-- content container -->
       <v-container class="content-container">
+        <!-- extra title row -->
         <v-row>
           <v-col>
-            <!-- extra title -->
             <h2 class="extra-title" :style="extraFontSize">
               Réalisez des vidéos haute qualité avec nos drôneurs professionnels
             </h2>
           </v-col>
         </v-row>
 
+        <!-- call to action row -->
         <v-row class="mt-10" justify-md="end">
-          <v-col
-            class="d-flex justify-content-center order-2 order-md-1 mt-10 "
-          >
+          <v-col class="d-flex justify-content-center order-2 order-md-1">
             <!-- call to action-->
-            <CtaCpn label="Réserver une prestation" bgColor="f29400"/>
+            <CtaCpn label="Réserver une prestation" bgColor="f29400">
+              <template v-slot:bottom>
+                <router-link class="font-weight-bold" style="color: #f29400" to="/prestation">
+                  En savoir plus
+                </router-link>
+              </template>
+            </CtaCpn>
           </v-col>
 
+          <!-- img bg 2-->
           <v-col class="col-md-6 order-1 order-md-2">
             <v-img class="img-bg-2" src="../assets/img1.jpg"></v-img>
           </v-col>
@@ -70,7 +92,14 @@
           Devenez votre propre réalisateur en pilotant un de nos appareils
         </h2>
 
-        <CtaCpn class="mt-10" label="Louer un drône" bgColor="009bf2" />
+        <!-- call to action -->
+        <CtaCpn class="mt-10" label="Louer un drône" bgColor="009bf2">
+          <template v-slot:bottom>
+            <router-link class="font-weight-bold" style="color: #009bf2" to="/contacts">
+              En savoir plus
+            </router-link>
+          </template>
+        </CtaCpn>
       </div>
     </div>
   </div>
@@ -111,7 +140,7 @@ export default Vue.extend({
     paddingHeight() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return { height: "150px" };
+          return { height: "125px" };
         case "sm":
           return { height: "250px" };
         case "md":
@@ -127,17 +156,17 @@ export default Vue.extend({
     ctaTop() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return { position: 'relative', top: "50px" };
+          return { position: "relative", top: "50px" };
         case "sm":
-          return { position: 'relative', top: "0px" };
+          return { position: "relative", top: "0px" };
         case "md":
-          return { position: 'relative', top: "-300px", left: '200px' };
+          return { position: "relative", top: "-300px", left: "200px" };
         case "lg":
-          return { position: 'relative', top: "-350px" };
+          return { position: "relative", top: "-350px" };
         case "xl":
-          return { position: 'relative', top: "-350px" };
+          return { position: "relative", top: "-350px" };
         default:
-          return { position: 'relative', top: "354px" };
+          return { position: "relative", top: "354px" };
       }
     },
     droneContainerStyle() {
@@ -285,8 +314,6 @@ export default Vue.extend({
       extraTitleBg1 = document.querySelector(".bg-1-block .extra-title");
       contentContainers = document.querySelectorAll(".content-container");
       ctaBg1 = document.querySelector(".bg-1-cta");
-
-
     },
     setup3DModel() {
       /**
@@ -330,7 +357,6 @@ export default Vue.extend({
     },
     bg1Scroll() {
       if (window.scrollY >= 400) {
-
         extraTitleBg1.style.left = "2000px";
         ctaBg1.style.opacity = "0";
       } else {

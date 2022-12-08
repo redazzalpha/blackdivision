@@ -1,8 +1,17 @@
 <template>
-  <div class="cta-container d-flex justify-content-center">
-    <v-btn class="cta" :style="style" @click="clicked" x-large>{{
-      label
-    }}</v-btn>
+  <div class="cta-container container container--fluid">
+    <v-row>
+      <v-col class="d-flex justify-content-center">
+        <v-btn class="cta" :style="style" @click="clicked" x-large >{{
+          label
+        }}</v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="d-flex justify-content-center">
+        <slot name="bottom"></slot>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -17,15 +26,17 @@ export default Vue.extend({
       required: true,
     },
     bgColor: {
+      // bgColor value in html format without hashtag #
       type: String,
       required: false,
       default: "dc3545",
     },
     textColor: {
+      // testColor value in html format without hashtag #
       type: String,
       required: false,
-      default: 'whitesmoke',
-    }
+      default: "whitesmoke",
+    },
   },
   data() {
     return {

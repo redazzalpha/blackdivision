@@ -27,7 +27,7 @@
               </v-row>
 
               <!-- follow us title row-->
-              <v-row justify="center" no-gutter>
+              <v-row no-gutter>
                 <v-col class="white--text"> Retrouvez-nous sur: </v-col>
               </v-row>
 
