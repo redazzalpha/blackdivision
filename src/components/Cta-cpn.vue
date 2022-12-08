@@ -2,7 +2,7 @@
   <div class="cta-container container container--fluid">
     <v-row>
       <v-col class="d-flex justify-content-center">
-        <v-btn class="cta" :style="style" @click="clicked" x-large >{{
+        <v-btn class="cta" :style="[style, ctaOpacity]" @click="clicked" x-large>{{
           label
         }}</v-btn>
       </v-col>
@@ -36,6 +36,17 @@ export default Vue.extend({
       type: String,
       required: false,
       default: "whitesmoke",
+    },
+  },
+  computed: {
+    ctaOpacity() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return {opacity: 1};
+        case "sm":
+          return {opacity: 1};
+        default: return {opacity: ""};
+      }
     },
   },
   data() {

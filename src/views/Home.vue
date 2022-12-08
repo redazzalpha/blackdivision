@@ -14,10 +14,15 @@
           label="Créer un compte"
           bgColor="ffffff"
           textColor="000000"
-          :style="ctaTop"
+          :style="[ctaTop]"
+
         >
           <template v-slot:bottom>
-            <router-link class="font-weight-bold" style="color: #ffffff" to="/prestation">
+            <router-link
+              class="font-weight-bold"
+              style="color: #ffffff"
+              to="/prestation"
+            >
               En savoir plus
             </router-link>
           </template>
@@ -52,7 +57,11 @@
             <!-- call to action-->
             <CtaCpn label="Réserver une prestation" bgColor="f29400">
               <template v-slot:bottom>
-                <router-link class="font-weight-bold" style="color: #f29400" to="/prestation">
+                <router-link
+                  class="font-weight-bold"
+                  style="color: #f29400"
+                  to="/prestation"
+                >
                   En savoir plus
                 </router-link>
               </template>
@@ -95,7 +104,11 @@
         <!-- call to action -->
         <CtaCpn class="mt-10" label="Louer un drône" bgColor="009bf2">
           <template v-slot:bottom>
-            <router-link class="font-weight-bold" style="color: #009bf2" to="/contacts">
+            <router-link
+              class="font-weight-bold"
+              style="color: #009bf2"
+              to="/contacts"
+            >
               En savoir plus
             </router-link>
           </template>
@@ -325,7 +338,7 @@ export default Vue.extend({
        */
       const model3D = new Model3D("drone.gltf", ".model-container", () => {
         extraTitleBg1.style.left = "0px";
-        ctaBg1.style.opacity = "1";
+        ctaBg1.style.opacity = 1;
 
         const animate = () => {
           requestAnimationFrame(animate);
@@ -361,7 +374,7 @@ export default Vue.extend({
         ctaBg1.style.opacity = "0";
       } else {
         extraTitleBg1.style.left = "0px";
-        ctaBg1.style.opacity = "1";
+        ctaBg1.style.opacity = 1;
       }
     },
     bg2Scroll() {
